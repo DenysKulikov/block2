@@ -30,25 +30,19 @@ public class ConnectionPool {
                 connections = new ArrayList<>();
                 IntStream.range(0, MAX_CONNECTION_NUMBER)
                         .boxed()
-                        .forEach(i -> {
-                            try {
-                                connections.add(createConnection());
-                            } catch (CreateConnectionExeption e) {
-                                throw new RuntimeException(e);
-                            }
-                        });
+                        .forEach(i -> connections.add(createConnection()));
                 return instance;
             }
         }
         return instance;
     }
 
-    private static Connection createConnection() throws CreateConnectionExeption {
+    private static Connection createConnection() {
         Connection connection;
         try {
             connection = DriverManager.getConnection(Config.URL, Config.USERNAME, Config.PASSWORD);
         } catch (SQLException e) {
-            throw new CreateConnectionExeption("", e);
+            throw new RuntimeException(e);
         }
         return connection;
     }
