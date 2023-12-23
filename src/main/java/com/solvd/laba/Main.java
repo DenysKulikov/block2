@@ -104,7 +104,7 @@ public class Main {
         materialService.create(material);
         materialService.addMaterialToBuilding(material.getId(), building.getId());
 
-        LOGGER.trace("Salary id: " + company.getId());
+        LOGGER.trace("Company id: " + company.getId());
         LOGGER.trace("Salary id: " + salary.getId());
         LOGGER.trace("Employee id: " + employee.getId());
         LOGGER.trace("Payment id: " + payment.getId());
