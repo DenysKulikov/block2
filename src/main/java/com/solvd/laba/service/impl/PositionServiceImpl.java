@@ -15,4 +15,9 @@ public class PositionServiceImpl implements PositionService {
     public Position create(Position position) {
         return positionRepository.crete(position);
     }
+
+    @Override
+    public void delete(Position position) {
+        positionRepository.delete(position);
+    }
 }

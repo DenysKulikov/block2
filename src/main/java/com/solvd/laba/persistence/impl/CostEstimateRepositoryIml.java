@@ -1,49 +1,48 @@
 package com.solvd.laba.persistence.impl;
 
-import com.solvd.laba.domain.Salary;
+import com.solvd.laba.domain.CostEstimate;
 import com.solvd.laba.persistence.ConnectionPool;
-import com.solvd.laba.persistence.repositories.SalaryRepository;
+import com.solvd.laba.persistence.repositories.CostEstimateRepository;
 
 import java.sql.*;
 
-public class SalaryRepositoryImpl implements SalaryRepository {
+public class CostEstimateRepositoryIml implements CostEstimateRepository {
     private static final ConnectionPool CONNECTION_POOL = ConnectionPool.getInstance();
 
     @Override
-    public Salary create(Salary salary) {
+    public CostEstimate create(CostEstimate costEstimate, Long buildingId) throws SQLException {
         Connection connection = CONNECTION_POOL.getConnection();
-        String insertInto = "INSERT INTO salaries(position, experience, amount) VALUES (?, ?, ?)";
+        String insertInto = "INSERT INTO cost_estimates (cost, building_id) VALUES (?, ?)";
+        connection.setAutoCommit(false);
 
         try (PreparedStatement preparedStatement = connection.prepareStatement(insertInto, Statement.RETURN_GENERATED_KEYS)) {
-            preparedStatement.setString(1, salary.getPosition());
-            preparedStatement.setString(2, salary.getExperience());
-            preparedStatement.setBigDecimal(3, salary.getAmount());
+            preparedStatement.setBigDecimal(1, costEstimate.getCost());
+            preparedStatement.setLong(2, buildingId);
 
             preparedStatement.executeUpdate();
 
             ResultSet resultSet = preparedStatement.getGeneratedKeys();
-            if (resultSet.next()) {
-                salary.setId(resultSet.getLong(1));
-            } else {
-                throw new RuntimeException("Failed to get generated key for Salary.");
+            while (resultSet.next()) {
+                costEstimate.setId(resultSet.getLong(1));
             }
+
+            connection.commit();
         } catch (SQLException e) {
-            e.printStackTrace();
             throw new RuntimeException(e);
         } finally {
+            connection.setAutoCommit(true);
             CONNECTION_POOL.releaseConnection(connection);
         }
-
-        return salary;
+        return costEstimate;
     }
 
     @Override
-    public void delete(Long salaryId) {
+    public void delete(Long costEstimateId) {
         Connection connection = CONNECTION_POOL.getConnection();
-        String delete = "DELETE FROM salaries s WHERE s.id = ?";
+        String delete = "DELETE FROM cost_estimates ca WHERE ca.id = ?";
 
         try (PreparedStatement preparedStatement = connection.prepareStatement(delete)) {
-            preparedStatement.setLong(1, salaryId);
+            preparedStatement.setLong(1, costEstimateId);
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
             throw new RuntimeException(e);
@@ -53,18 +52,20 @@ public class SalaryRepositoryImpl implements SalaryRepository {
     }
 
     @Override
-    public Long getSalaryId(Salary salary) throws SQLException {
+    public Long getCostEstimateId(CostEstimate costEstimate) throws SQLException {
         Connection connection = CONNECTION_POOL.getConnection();
-        String select = "SELECT s.id FROM salaries s WHERE s.experience = ?";
+        String select = "SELECT ca.id FROM cost_estimates ca WHERE ca.id = ?";
         connection.setReadOnly(true);
 
-        try (PreparedStatement preparedStatement = connection.prepareStatement(select, Statement.RETURN_GENERATED_KEYS)) {
-            preparedStatement.setString(1, salary.getExperience());
+        try (PreparedStatement preparedStatement = connection.prepareStatement(select)) {
+            preparedStatement.setLong(1, costEstimate.getId());
 
             ResultSet resultSet = preparedStatement.executeQuery();
-            while (resultSet.next()) {
-                salary.setId(resultSet.getLong("id"));
+            if (resultSet.next()) {
+                costEstimate.setId(resultSet.getLong("id"));
                 return resultSet.getLong("id");
+            } else {
+                throw new RuntimeException("Building record not found for the provided id.");
             }
         } catch (SQLException e) {
             throw new RuntimeException(e);
@@ -72,6 +73,5 @@ public class SalaryRepositoryImpl implements SalaryRepository {
             connection.setReadOnly(false);
             CONNECTION_POOL.releaseConnection(connection);
         }
-        return salary.getId();
     }
 }

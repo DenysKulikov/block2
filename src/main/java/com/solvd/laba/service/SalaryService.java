@@ -6,5 +6,6 @@ import java.sql.SQLException;
 
 public interface SalaryService {
     Salary create(Salary salary);
+    void delete(Long salaryId);
     Long getSalaryId(Salary salary) throws SQLException;
 }

@@ -27,17 +27,16 @@ public class EmployeeServiceImpl implements EmployeeService {
     }
 
     @Override
-    public Employee create(Employee employee, Company company, Salary salary, Position position) throws SQLException {
+    public Employee create(Employee employee, Long companyId, Long salaryId, Position position) throws SQLException {
         employee.setId(null);
-
-        companyService.create(company);
-        Long companyId = companyService.getCompanyId(company);
-
-        salaryService.create(salary);
-        Long salaryId = salaryService.getSalaryId(salary);
 
         positionService.create(position);
         employee.setHasCar(position.hasCar());
         return employeeRepository.create(employee, companyId, salaryId, position);
+    }
+
+    @Override
+    public void delete(Long employeeId) {
+        employeeRepository.delete(employeeId);
     }
 }

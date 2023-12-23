@@ -1,21 +1,23 @@
 package com.solvd.laba.persistence.impl;
 
-import com.solvd.laba.domain.enums.Position;
+import com.solvd.laba.domain.enums.BuildingType;
 import com.solvd.laba.persistence.ConnectionPool;
-import com.solvd.laba.persistence.repositories.PositionRepository;
+import com.solvd.laba.persistence.repositories.BuildingTypeRepository;
 
-import java.sql.*;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 
-public class PositionRepositoryImpl implements PositionRepository {
+public class BuildingTypeRepositoryImpl implements BuildingTypeRepository {
     private static final ConnectionPool CONNECTION_POOL = ConnectionPool.getInstance();
     @Override
-    public Position crete(Position position) {
+    public BuildingType crete(BuildingType buildingType) {
         Connection connection = CONNECTION_POOL.getConnection();
-        String insertInto = "INSERT INTO positions(position, has_car) VALUES (?, ?) ";
+        String insertInto = "INSERT INTO building_types (building_type, base_cost) VALUES (?, ?) ";
 
         try (PreparedStatement preparedStatement = connection.prepareStatement(insertInto)) {
-            preparedStatement.setString(1, position.name());
-            preparedStatement.setBoolean(2, position.hasCar());
+            preparedStatement.setString(1, buildingType.name());
+            preparedStatement.setBigDecimal(2, buildingType.getBaseCost());
 
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
@@ -23,16 +25,16 @@ public class PositionRepositoryImpl implements PositionRepository {
         } finally {
             CONNECTION_POOL.releaseConnection(connection);
         }
-        return position;
+        return buildingType;
     }
 
     @Override
-    public void delete(Position position) {
+    public void delete(BuildingType buildingType) {
         Connection connection = CONNECTION_POOL.getConnection();
-        String delete = "DELETE FROM positions p WHERE p.position = ?";
+        String delete = "DELETE FROM building_types bt WHERE bt.building_type = ? ";
 
         try (PreparedStatement preparedStatement = connection.prepareStatement(delete)) {
-            preparedStatement.setString(1, position.name());
+            preparedStatement.setString(1, buildingType.name());
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
             throw new RuntimeException(e);

@@ -8,7 +8,7 @@ public class Salary {
     private String experience;
     private BigDecimal amount;
 
-    public long getId() {
+    public Long getId() {
         return id;
     }
 

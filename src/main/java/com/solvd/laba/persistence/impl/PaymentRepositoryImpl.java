@@ -1,49 +1,44 @@
 package com.solvd.laba.persistence.impl;
 
-import com.solvd.laba.domain.Salary;
+import com.solvd.laba.domain.Payment;
 import com.solvd.laba.persistence.ConnectionPool;
-import com.solvd.laba.persistence.repositories.SalaryRepository;
+import com.solvd.laba.persistence.repositories.PaymentRepository;
 
 import java.sql.*;
 
-public class SalaryRepositoryImpl implements SalaryRepository {
+public class PaymentRepositoryImpl implements PaymentRepository {
     private static final ConnectionPool CONNECTION_POOL = ConnectionPool.getInstance();
 
     @Override
-    public Salary create(Salary salary) {
+    public Payment create(Payment payment) {
         Connection connection = CONNECTION_POOL.getConnection();
-        String insertInto = "INSERT INTO salaries(position, experience, amount) VALUES (?, ?, ?)";
+        String insertInto = "INSERT INTO payments (amount, payment_date) VALUES (?, ?)";
 
         try (PreparedStatement preparedStatement = connection.prepareStatement(insertInto, Statement.RETURN_GENERATED_KEYS)) {
-            preparedStatement.setString(1, salary.getPosition());
-            preparedStatement.setString(2, salary.getExperience());
-            preparedStatement.setBigDecimal(3, salary.getAmount());
+            preparedStatement.setBigDecimal(1, payment.getAmount());
+            preparedStatement.setDate(2, payment.getPaymentDate());
 
             preparedStatement.executeUpdate();
 
             ResultSet resultSet = preparedStatement.getGeneratedKeys();
-            if (resultSet.next()) {
-                salary.setId(resultSet.getLong(1));
-            } else {
-                throw new RuntimeException("Failed to get generated key for Salary.");
+            while (resultSet.next()) {
+                payment.setId(resultSet.getLong(1));
             }
         } catch (SQLException e) {
-            e.printStackTrace();
             throw new RuntimeException(e);
         } finally {
             CONNECTION_POOL.releaseConnection(connection);
         }
-
-        return salary;
+        return payment;
     }
 
     @Override
-    public void delete(Long salaryId) {
+    public void delete(Long paymentId) {
         Connection connection = CONNECTION_POOL.getConnection();
-        String delete = "DELETE FROM salaries s WHERE s.id = ?";
+        String delete = "DELETE FROM payments p WHERE p.id = ?";
 
         try (PreparedStatement preparedStatement = connection.prepareStatement(delete)) {
-            preparedStatement.setLong(1, salaryId);
+            preparedStatement.setLong(1, paymentId);
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
             throw new RuntimeException(e);
@@ -53,18 +48,20 @@ public class SalaryRepositoryImpl implements SalaryRepository {
     }
 
     @Override
-    public Long getSalaryId(Salary salary) throws SQLException {
+    public Long getPaymentId(Payment payment) throws SQLException {
         Connection connection = CONNECTION_POOL.getConnection();
-        String select = "SELECT s.id FROM salaries s WHERE s.experience = ?";
+        String select = "SELECT p.id FROM payments p WHERE p.id = ?";
         connection.setReadOnly(true);
 
-        try (PreparedStatement preparedStatement = connection.prepareStatement(select, Statement.RETURN_GENERATED_KEYS)) {
-            preparedStatement.setString(1, salary.getExperience());
+        try (PreparedStatement preparedStatement = connection.prepareStatement(select)) {
+            preparedStatement.setLong(1, payment.getId());
 
             ResultSet resultSet = preparedStatement.executeQuery();
-            while (resultSet.next()) {
-                salary.setId(resultSet.getLong("id"));
+            if (resultSet.next()) {
+                payment.setId(resultSet.getLong("id"));
                 return resultSet.getLong("id");
+            } else {
+                throw new RuntimeException("Payment record not found for the provided info.");
             }
         } catch (SQLException e) {
             throw new RuntimeException(e);
@@ -72,6 +69,5 @@ public class SalaryRepositoryImpl implements SalaryRepository {
             connection.setReadOnly(false);
             CONNECTION_POOL.releaseConnection(connection);
         }
-        return salary.getId();
     }
 }

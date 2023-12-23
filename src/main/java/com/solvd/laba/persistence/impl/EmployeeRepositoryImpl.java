@@ -39,5 +39,18 @@ public class EmployeeRepositoryImpl implements EmployeeRepository {
         return employee;
     }
 
+    @Override
+    public void delete(Long employeeId) {
+        Connection connection = CONNECTION_POOL.getConnection();
+        String delete = "DELETE FROM employees e WHERE e.id = ?";
 
+        try (PreparedStatement preparedStatement = connection.prepareStatement(delete)) {
+            preparedStatement.setLong(1, employeeId);
+            preparedStatement.executeUpdate();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } finally {
+            CONNECTION_POOL.releaseConnection(connection);
+        }
+    }
 }

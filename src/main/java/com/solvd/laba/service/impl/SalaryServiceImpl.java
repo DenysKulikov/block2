@@ -20,6 +20,11 @@ public class SalaryServiceImpl implements SalaryService {
     }
 
     @Override
+    public void delete(Long salaryId) {
+        salaryRepository.delete(salaryId);
+    }
+
+    @Override
     public Long getSalaryId(Salary salary) throws SQLException {
         return salaryRepository.getSalaryId(salary);
     }

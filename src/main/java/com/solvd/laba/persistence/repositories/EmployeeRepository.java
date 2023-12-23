@@ -7,4 +7,5 @@ import java.sql.SQLException;
 
 public interface EmployeeRepository {
     Employee create(Employee employee, Long companyId, Long salaryId, Position position) throws SQLException;
+    void delete(Long employeeId);
 }

@@ -8,6 +8,7 @@ import java.util.List;
 
 public interface CompanyService {
     Company create(Company company) throws SQLException;
+    void delete(Long companyId);
     List<Company> retrieveAll();
     Long getCompanyId(Company company) throws SQLException;
 }

@@ -11,6 +11,11 @@
 
     </Appenders>
     <Loggers>
+        <Logger name="com.solvd.laba.Main" level="trace">
+            <AppenderRef ref="Console"/>
+            <AppenderRef ref="File"/>
+        </Logger>
+
         <Root level="error">
         </Root>
     </Loggers>

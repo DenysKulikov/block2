@@ -7,6 +7,7 @@ import java.util.List;
 
 public interface CompanyRepository {
     Company create(Company company) throws SQLException;
+    void delete(Long companyId);
     List<Company> findAll();
     Long getCompanyId(Company company) throws SQLException;
 }

@@ -31,6 +31,7 @@ public class CompanyRepositoryImpl implements CompanyRepository {
 
         try (PreparedStatement preparedStatement = connection.prepareStatement(insertInto, Statement.RETURN_GENERATED_KEYS)) {
             preparedStatement.setString(1, company.getName());
+
             preparedStatement.executeUpdate();
 
             ResultSet resultSet = preparedStatement.getGeneratedKeys();
@@ -43,6 +44,21 @@ public class CompanyRepositoryImpl implements CompanyRepository {
             CONNECTION_POOL.releaseConnection(connection);
         }
         return company;
+    }
+
+    @Override
+    public void delete(Long companyId) {
+        Connection connection = CONNECTION_POOL.getConnection();
+        String delete = "DELETE FROM companies c WHERE c.id = ?";
+
+        try (PreparedStatement preparedStatement = connection.prepareStatement(delete)) {
+            preparedStatement.setLong(1, companyId);
+            preparedStatement.executeUpdate();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } finally {
+            CONNECTION_POOL.releaseConnection(connection);
+        }
     }
 
     @Override

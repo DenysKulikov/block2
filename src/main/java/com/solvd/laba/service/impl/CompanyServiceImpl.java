@@ -21,6 +21,11 @@ public class CompanyServiceImpl implements CompanyService {
     }
 
     @Override
+    public void delete(Long companyId) {
+        companyRepository.delete(companyId);
+    }
+
+    @Override
     public List<Company> retrieveAll() {
         return companyRepository.findAll();
     }

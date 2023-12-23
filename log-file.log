@@ -1,0 +1,24 @@
+17:00:45.444 [main] TRACE com.solvd.laba.Main - Salary id: 15
+17:03:32.486 [main] TRACE com.solvd.laba.Main - Salary id: 74
+17:03:32.488 [main] TRACE com.solvd.laba.Main - Salary id: 16
+17:03:32.488 [main] TRACE com.solvd.laba.Main - Employee id: 17
+17:03:32.488 [main] TRACE com.solvd.laba.Main - Payment id: 9
+17:03:32.488 [main] TRACE com.solvd.laba.Main - Customer id: 6
+19:52:54.123 [main] TRACE com.solvd.laba.Main - Salary id: 80
+19:52:54.125 [main] TRACE com.solvd.laba.Main - Salary id: 21
+19:52:54.125 [main] TRACE com.solvd.laba.Main - Employee id: 22
+19:52:54.125 [main] TRACE com.solvd.laba.Main - Payment id: 14
+19:52:54.125 [main] TRACE com.solvd.laba.Main - Customer id: 11
+19:52:54.125 [main] TRACE com.solvd.laba.Main - Building id: 3
+19:52:54.125 [main] TRACE com.solvd.laba.Main - Building Approval id: 3
+19:52:54.126 [main] TRACE com.solvd.laba.Main - CostEstimate (for building) id: 1
+19:52:54.126 [main] TRACE com.solvd.laba.Main - Material Approval id: 4
+19:53:31.500 [main] TRACE com.solvd.laba.Main - Salary id: 81
+19:53:31.502 [main] TRACE com.solvd.laba.Main - Salary id: 22
+19:53:31.503 [main] TRACE com.solvd.laba.Main - Employee id: 23
+19:53:31.503 [main] TRACE com.solvd.laba.Main - Payment id: 15
+19:53:31.503 [main] TRACE com.solvd.laba.Main - Customer id: 12
+19:53:31.503 [main] TRACE com.solvd.laba.Main - Building id: 4
+19:53:31.503 [main] TRACE com.solvd.laba.Main - Building Approval id: 4
+19:53:31.503 [main] TRACE com.solvd.laba.Main - CostEstimate (for building) id: 2
+19:53:31.503 [main] TRACE com.solvd.laba.Main - Material Approval id: 5
