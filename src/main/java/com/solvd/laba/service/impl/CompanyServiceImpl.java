@@ -6,6 +6,7 @@ import com.solvd.laba.service.CompanyService;
 
 import java.sql.SQLException;
 import java.util.List;
+import java.util.Optional;
 
 public class CompanyServiceImpl implements CompanyService {
     private final CompanyRepository companyRepository;
@@ -31,7 +32,7 @@ public class CompanyServiceImpl implements CompanyService {
     }
 
     @Override
-    public Long getCompanyId(Company company) throws SQLException {
-        return companyRepository.getCompanyId(company);
+    public Optional<Company> findById(Long companyId) throws SQLException {
+        return companyRepository.findById(companyId);
     }
 }

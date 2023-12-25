@@ -24,7 +24,7 @@ public class CostEstimateServiceImpl implements CostEstimateService {
     }
 
     @Override
-    public Long getCostEstimateId(CostEstimate costEstimate) throws SQLException {
-        return costEstimateRepository.getCostEstimateId(costEstimate);
+    public CostEstimate findById(Long companyId) throws SQLException {
+        return costEstimateRepository.findById(companyId);
     }
 }

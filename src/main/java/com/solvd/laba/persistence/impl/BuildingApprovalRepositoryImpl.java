@@ -53,20 +53,23 @@ public class BuildingApprovalRepositoryImpl implements BuildingApprovalRepositor
     }
 
     @Override
-    public Long getBuildingApprovalId(BuildingApproval buildingApproval) throws SQLException {
+    public BuildingApproval findById(Long buildingApprovalId) throws SQLException {
         Connection connection = CONNECTION_POOL.getConnection();
-        String select = "SELECT ba.id FROM building_approvals ba WHERE ba.id = ?";
+        String select = "SELECT ba.id, ba.time_needed, ba.approved_by FROM building_approvals ba WHERE ba.id = ?";
         connection.setReadOnly(true);
 
         try (PreparedStatement preparedStatement = connection.prepareStatement(select)) {
-            preparedStatement.setLong(1, buildingApproval.getId());
+            preparedStatement.setLong(1, buildingApprovalId);
 
             ResultSet resultSet = preparedStatement.executeQuery();
             if (resultSet.next()) {
+                BuildingApproval buildingApproval = new BuildingApproval();
                 buildingApproval.setId(resultSet.getLong("id"));
-                return resultSet.getLong("id");
+                buildingApproval.setTime_needed(resultSet.getString("time_needed"));
+                buildingApproval.setApproved_by(resultSet.getString("approved_by"));
+                return buildingApproval;
             } else {
-                throw new RuntimeException("Building record not found for the provided id.");
+                throw new RuntimeException("Building Approval record not found for the provided id.");
             }
         } catch (SQLException e) {
             throw new RuntimeException(e);

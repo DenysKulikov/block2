@@ -6,7 +6,6 @@ public class Building {
     private Long id;
     private BuildingType buildingType;
     private String buildingDescription;
-    private Long companyId;
 
     public Long getId() {
         return id;
@@ -30,13 +29,5 @@ public class Building {
 
     public void setBuildingDescription(String buildingDescription) {
         this.buildingDescription = buildingDescription;
-    }
-
-    public Long getCompanyId() {
-        return companyId;
-    }
-
-    public void setCompanyId(Long companyId) {
-        this.companyId = companyId;
     }
 }

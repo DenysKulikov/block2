@@ -14,15 +14,10 @@ import java.sql.SQLException;
 
 public class EmployeeServiceImpl implements EmployeeService {
     private final EmployeeRepository employeeRepository;
-    private final CompanyService companyService;
-    private final SalaryService salaryService;
     private final PositionService positionService;
 
-    public EmployeeServiceImpl(EmployeeRepository employeeRepository, CompanyService companyService,
-                               SalaryService salaryService, PositionService positionService) {
+    public EmployeeServiceImpl(EmployeeRepository employeeRepository, PositionService positionService) {
         this.employeeRepository = employeeRepository;
-        this.companyService = companyService;
-        this.salaryService = salaryService;
         this.positionService = positionService;
     }
 
@@ -33,6 +28,16 @@ public class EmployeeServiceImpl implements EmployeeService {
         positionService.create(position);
         employee.setHasCar(position.hasCar());
         return employeeRepository.create(employee, companyId, salaryId, position);
+    }
+
+    @Override
+    public void addEmployeeToBuilding(Long employeeId, Long buildingId) {
+        employeeRepository.addEmployeeToBuilding(employeeId, buildingId);
+    }
+
+    @Override
+    public void deleteEmployeeFromBuilding(Long employeeId, Long buildingId) {
+        employeeRepository.deleteEmployeeFromBuilding(employeeId, buildingId);
     }
 
     @Override

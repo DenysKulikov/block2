@@ -5,6 +5,7 @@ import com.solvd.laba.persistence.repositories.BuildingRepository;
 import com.solvd.laba.service.BuildingService;
 
 import java.sql.SQLException;
+import java.util.Optional;
 
 public class BuildingServiceImpl implements BuildingService {
     private final BuildingRepository buildingRepository;
@@ -24,7 +25,7 @@ public class BuildingServiceImpl implements BuildingService {
     }
 
     @Override
-    public Long getBuildingId(Building building) throws SQLException {
-        return buildingRepository.getBuildingId(building);
+    public Optional<Building> findById(Long buildingId) throws SQLException {
+        return buildingRepository.findById(buildingId);
     }
 }

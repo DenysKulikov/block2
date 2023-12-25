@@ -1,6 +1,5 @@
 package com.solvd.laba.persistence.repositories;
 
-import com.solvd.laba.domain.Company;
 import com.solvd.laba.domain.Customer;
 
 import java.sql.SQLException;

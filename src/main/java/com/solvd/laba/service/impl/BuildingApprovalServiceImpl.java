@@ -24,7 +24,7 @@ public class BuildingApprovalServiceImpl implements BuildingApprovalService {
     }
 
     @Override
-    public Long getBuildingApprovalId(BuildingApproval buildingApproval) throws SQLException {
-        return buildingApprovalRepository.getBuildingApprovalId(buildingApproval);
+    public BuildingApproval findById(Long buildingApprovalId) throws SQLException {
+        return buildingApprovalRepository.findById(buildingApprovalId);
     }
 }

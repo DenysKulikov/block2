@@ -19,33 +19,33 @@ DROP TABLE customers;
 DROP TABLE companies;
 
 CREATE TABLE IF NOT EXISTS companies (
-    id SERIAL PRIMARY KEY,
-    company_name VARCHAR(20) NOT NULL UNIQUE
+                                         id SERIAL PRIMARY KEY,
+                                         company_name VARCHAR(20) NOT NULL UNIQUE
     );
 
 CREATE TABLE IF NOT EXISTS building_types (
-    id SERIAL PRIMARY KEY,
-    building_type VARCHAR(50) NOT NULL UNIQUE,
+                                              id SERIAL PRIMARY KEY,
+                                              building_type VARCHAR(50) NOT NULL UNIQUE,
     base_cost DECIMAL(10, 2)
     );
 
 CREATE TABLE IF NOT EXISTS payments (
-    id SERIAL PRIMARY KEY,
-    amount DECIMAL(10, 2) NOT NULL,
+                                        id SERIAL PRIMARY KEY,
+                                        amount DECIMAL(10, 2) NOT NULL,
     payment_date DATE NOT NULL
     );
 
 CREATE TABLE IF NOT EXISTS customers (
-    id SERIAL PRIMARY KEY,
-    first_name VARCHAR(50) NOT NULL,
+                                         id SERIAL PRIMARY KEY,
+                                         first_name VARCHAR(50) NOT NULL,
     last_name VARCHAR(150) NOT NULL,
     payment_id BIGINT UNSIGNED,
     CONSTRAINT fk_customer_payments FOREIGN KEY(payment_id) REFERENCES payments(id) ON UPDATE NO ACTION ON DELETE NO ACTION
     );
 
 CREATE TABLE IF NOT EXISTS buildings (
-    id SERIAL PRIMARY KEY,
-    building_type VARCHAR(50) NOT NULL,
+                                         id SERIAL PRIMARY KEY,
+                                         building_type VARCHAR(50) NOT NULL,
     building_description VARCHAR(150) NULL,
     company_id BIGINT UNSIGNED,
     CONSTRAINT fk_company_buildings FOREIGN KEY(company_id) REFERENCES companies(id) ON UPDATE NO ACTION ON DELETE NO ACTION,
@@ -53,29 +53,29 @@ CREATE TABLE IF NOT EXISTS buildings (
     );
 
 CREATE TABLE IF NOT EXISTS building_approvals (
-    id SERIAL PRIMARY KEY,
-    time_needed VARCHAR(45) NOT NULL,
+                                                  id SERIAL PRIMARY KEY,
+                                                  time_needed VARCHAR(45) NOT NULL,
     approved_by VARCHAR(45) NOT NULL,
     building_id BIGINT UNSIGNED,
     FOREIGN KEY (building_id) REFERENCES buildings(id)
     );
 
 CREATE TABLE IF NOT EXISTS positions (
-    id SERIAL PRIMARY KEY,
-    position VARCHAR(50) NOT NULL UNIQUE,
+                                         id SERIAL PRIMARY KEY,
+                                         position VARCHAR(50) NOT NULL UNIQUE,
     has_car BOOLEAN NOT NULL
     );
 
 CREATE TABLE IF NOT EXISTS salaries (
-    id SERIAL PRIMARY KEY,
-    position VARCHAR(50) NOT NULL,
-    experiance VARCHAR(50) NULL,
+                                        id SERIAL PRIMARY KEY,
+                                        position VARCHAR(50) NOT NULL,
+    experience VARCHAR(50) NULL,
     amount DECIMAL(10, 2)
     );
 
 CREATE TABLE IF NOT EXISTS employees (
-    id SERIAL PRIMARY KEY,
-    first_name VARCHAR(50) NOT NULL,
+                                         id SERIAL PRIMARY KEY,
+                                         first_name VARCHAR(50) NOT NULL,
     last_name VARCHAR(150) NOT NULL,
     position VARCHAR(50) NOT NULL,
     company_id BIGINT UNSIGNED,
@@ -85,21 +85,28 @@ CREATE TABLE IF NOT EXISTS employees (
     CONSTRAINT fk_salary_employees FOREIGN KEY (salary_id) REFERENCES salaries(id) ON UPDATE NO ACTION ON DELETE NO ACTION
     );
 
+select * from salaries;
+SELECT
+    s.id,
+    e.id as employeeId
+FROM salaries s
+         LEFT JOIN employees e ON s.id = e.salary_id;
+
 CREATE TABLE IF NOT EXISTS cost_estimates (
-    id SERIAL PRIMARY KEY,
-    cost DECIMAL(10, 2) NOT NULL,
+                                              id SERIAL PRIMARY KEY,
+                                              cost DECIMAL(10, 2) NOT NULL,
     building_id BIGINT UNSIGNED,
     CONSTRAINT fk_building_cost_estimates FOREIGN KEY(building_id) REFERENCES buildings(id) ON UPDATE NO ACTION ON DELETE NO ACTION
     );
 
 CREATE TABLE IF NOT EXISTS material_types (
-    id SERIAL PRIMARY KEY,
-    material_type VARCHAR(50) UNIQUE
+                                              id SERIAL PRIMARY KEY,
+                                              material_type VARCHAR(50) UNIQUE
     );
 
 CREATE TABLE IF NOT EXISTS materials (
-    id SERIAL PRIMARY KEY,
-    material_name VARCHAR(50) NOT NULL,
+                                         id SERIAL PRIMARY KEY,
+                                         material_name VARCHAR(50) NOT NULL,
     amount BIGINT NOT NULL,
     price DECIMAL NOT NULL,
     material_type VARCHAR(50) NOT NULL,
@@ -107,17 +114,24 @@ CREATE TABLE IF NOT EXISTS materials (
     );
 
 CREATE TABLE IF NOT EXISTS material_buildings (
-    material_id BIGINT UNSIGNED,
-    building_id BIGINT UNSIGNED,
-    CONSTRAINT fk_material_buildings_material_id FOREIGN KEY(material_id) REFERENCES materials(id) ON UPDATE NO ACTION ON DELETE NO ACTION,
+                                                  material_id BIGINT UNSIGNED,
+                                                  building_id BIGINT UNSIGNED,
+                                                  CONSTRAINT fk_material_buildings_material_id FOREIGN KEY(material_id) REFERENCES materials(id) ON UPDATE NO ACTION ON DELETE NO ACTION,
     CONSTRAINT fk_material_buildings_building_id FOREIGN KEY(building_id) REFERENCES buildings(id) ON UPDATE NO ACTION ON DELETE NO ACTION
     );
 
 CREATE TABLE IF NOT EXISTS customer_companies (
-    customer_id BIGINT UNSIGNED,
-    company_id BIGINT UNSIGNED,
-    CONSTRAINT fk_customer_companies_customer_id FOREIGN KEY(customer_id) REFERENCES customers(id) ON UPDATE NO ACTION ON DELETE NO ACTION,
+                                                  customer_id BIGINT UNSIGNED,
+                                                  company_id BIGINT UNSIGNED,
+                                                  CONSTRAINT fk_customer_companies_customer_id FOREIGN KEY(customer_id) REFERENCES customers(id) ON UPDATE NO ACTION ON DELETE NO ACTION,
     CONSTRAINT fk_customer_companies_company_id FOREIGN KEY(company_id) REFERENCES companies(id) ON UPDATE NO ACTION ON DELETE NO ACTION
+    );
+
+CREATE TABLE IF NOT EXISTS employee_buildings (
+                                                  employee_id BIGINT UNSIGNED,
+                                                  building_id BIGINT UNSIGNED,
+                                                  CONSTRAINT fk_employee_buildings_employee_id FOREIGN KEY(employee_id) REFERENCES employees(id) ON UPDATE NO ACTION ON DELETE NO ACTION,
+    CONSTRAINT fk_employee_buildings_building_id FOREIGN KEY(building_id) REFERENCES buildings(id) ON UPDATE NO ACTION ON DELETE NO ACTION
     );
 
 INSERT INTO companies(company_name) value ("Integral Bud");
@@ -156,8 +170,47 @@ DELETE FROM payments WHERE amount = 5500.00;
 DELETE FROM payments WHERE amount = 8200.00;
 DELETE FROM payments WHERE amount = 12500.00;
 
+select * from employees;
 select * from companies;
+select * from positions;
+select * from salaries;
+select * from customer_companies;
+select * from customers;
+select * from payments;
+select * from material_buildings;
+select * from materials;
+select * from material_types;
+select * from building_approvals;
+select * from cost_estimates;
+select * from buildings;
+select * from building_types;
 
+SELECT
+    c.id as company_id, c.company_name,
+    e.id as employee_id, e.first_name, e.last_name, e.position as employee_position,
+    b.id as building_id, b.building_type, b.building_description
+FROM companies c
+         LEFT JOIN employees e ON e.company_id = c.id
+         LEFT JOIN employee_buildings eb ON e.id = eb.employee_id
+         LEFT JOIN buildings b ON eb.building_id = b.id
+WHERE c.id = 1;
+
+DELETE FROM employees e WHERE e.id = 21;
+DELETE FROM customer_companies WHERE customer_id = 10;
+DELETE FROM customers WHERE customers.id = 10;
+DELETE FROM payments where payments.id = 13;
+DELETE FROM material_buildings mb where mb.building_id = 1 and mb.material_id = 2;
+DELETE FROM materials m where m.id = 3;
+DELETE FROM material_types mt where mt.id = 3;
+DELETE FROM building_approvals ba where ba.id = 2;
+DELETE FROM buildings b WHERE b.id = 2;
+DELETE FROM companies c WHERE c.company_name = 'Bud';
+DELETE FROM salaries s WHERE s.id = 20;
+DELETE FROM positions p WHERE p.position = 'BUILDER';
+DELETE FROM building_types bt WHERE bt.building_type = 'COMMERCIAL';
+
+
+INSERT INTO salaries(position, experience, amount) VALUES ('1', '1', 5500.00);
 INSERT INTO customers (first_name, last_name, company_id, payment_id) VALUES ('John', 'Doe', 3, 1);
 INSERT INTO customers (first_name, last_name, company_id, payment_id) VALUES ('Jane', 'Smith', 4, 2);
 INSERT INTO customers (first_name, last_name, company_id, payment_id) VALUES ('Bob', 'Johnson', 5, 3);
@@ -210,7 +263,7 @@ DELETE FROM positions WHERE position = 'Architect';
 DELETE FROM positions WHERE position = 'Project Manager';
 DELETE FROM positions WHERE position = 'Construction Worker';
 
-INSERT INTO salaries (position, experiance, amount) VALUES ('Architect', '5 years', 80000.00);
+INSERT INTO salaries (position, experience, amount) VALUES ('Architect', '5 years', 80000.00);
 INSERT INTO salaries (position, experiance, amount) VALUES ('Project Manager', '7 years', 100000.00);
 INSERT INTO salaries (position, experiance, amount) VALUES ('Construction Worker', '2 years', 50000.00);
 
@@ -224,6 +277,10 @@ DELETE FROM salaries WHERE position = 'Construction Worker' AND experiance = '2 
 
 select * from companies;
 select * from salaries;
+select * from employees;
+
+DELETE FROM companies c where c.company_name = 'Bud';
+DELETE FROM employees e where e.first_name = 'Alice';
 
 INSERT INTO employees (first_name, last_name, position, company_id, salary_id) VALUES ('Alice', 'Johnson', 'Architect', 3, 1);
 INSERT INTO employees (first_name, last_name, position, company_id, salary_id) VALUES ('Bob', 'Smith', 'Project Manager', 4, 2);
@@ -264,7 +321,6 @@ INSERT INTO materials (material_name, amount, price, material_type) VALUES ('Ste
 INSERT INTO materials (material_name, amount, price, material_type) VALUES ('Wood Planks', 200, 150.00, 'Wood');
 
 SELECT * FROM materials;
-SELECT * FROM buildings;
 
 INSERT INTO material_buildings (material_id, building_id) VALUES (1, 2);
 INSERT INTO material_buildings (material_id, building_id) VALUES (2, 3);
@@ -484,24 +540,15 @@ GROUP BY bt.building_type
 HAVING SUM(bt.base_cost) > 50000;
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+Select
+    c.id AS company_id, c.company_name AS company_name,
+    e.id AS employee_id, e.first_name, e.last_name, e.position,
+    s.id AS salary_id, s.experience AS employee_experience, s.amount AS salary_amount,
+    p.has_car AS does_employee_has_car
+FROM companies c
+         LEFT JOIN employees e ON c.id = e.company_id
+         LEFT JOIN salaries s ON e.salary_id = s.id
+         LEFT JOIN positions p ON e.position = p.position
 
 
 

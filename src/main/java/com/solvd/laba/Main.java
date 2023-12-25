@@ -65,7 +65,7 @@ public class Main {
         PositionService positionService = new PositionServiceImpl(positionRepository);
 
         EmployeeRepository employeeRepository = new EmployeeRepositoryImpl();
-        EmployeeServiceImpl employeeService = new EmployeeServiceImpl(employeeRepository, companyService, salaryService, positionService);
+        EmployeeServiceImpl employeeService = new EmployeeServiceImpl(employeeRepository, positionService);
         companyService.create(company);
         salaryService.create(salary);
         employeeService.create(employee, company.getId(), salary.getId(), Position.BUILDER);
@@ -86,6 +86,7 @@ public class Main {
         BuildingRepository buildingRepository = new BuildingRepositoryImpl();
         BuildingService buildingService = new BuildingServiceImpl(buildingRepository);
         buildingService.create(building, company.getId());
+        employeeService.addEmployeeToBuilding(employee.getId(), building.getId());
 
         BuildingApprovalRepository buildingApprovalRepository = new BuildingApprovalRepositoryImpl();
         BuildingApprovalService buildingApprovalService = new BuildingApprovalServiceImpl(buildingApprovalRepository);
@@ -114,6 +115,7 @@ public class Main {
         LOGGER.trace("CostEstimate (for building) id: " + costEstimate.getId());
         LOGGER.trace("Material Approval id: " + material.getId());
 
+        employeeRepository.deleteEmployeeFromBuilding(employee.getId(), building.getId());
         employeeRepository.delete(employee.getId());
         customerRepository.deleteCustomerFromCompany(customer.getId(), company.getId());
         customerRepository.delete(customer.getId());
