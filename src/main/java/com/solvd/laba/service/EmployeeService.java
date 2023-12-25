@@ -9,7 +9,7 @@ import org.apache.ibatis.annotations.Param;
 import java.sql.SQLException;
 
 public interface EmployeeService {
-    Employee create(@Param("employee") Employee employee, @Param("companyId") Long companyId, @Param("salaryId") Long salaryId, Position position) throws SQLException;
+    void create(@Param("employee") Employee employee, @Param("companyId") Long companyId, @Param("salaryId") Long salaryId, Position position) throws SQLException;
     void addEmployeeToBuilding(@Param("employeeId") Long employeeId, @Param("buildingId") Long buildingId);
     void deleteEmployeeFromBuilding(Long employeeId, Long buildingId);
     void delete(Long employeeId);

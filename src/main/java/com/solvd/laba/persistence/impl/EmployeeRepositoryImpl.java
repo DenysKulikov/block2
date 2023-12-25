@@ -10,7 +10,7 @@ import java.sql.*;
 public class EmployeeRepositoryImpl implements EmployeeRepository {
     private static final ConnectionPool CONNECTION_POOL = ConnectionPool.getInstance();
     @Override
-    public Employee create(Employee employee, Long companyId, Long salaryId, Position position) throws SQLException {
+    public void create(Employee employee, Long companyId, Long salaryId, Position position) throws SQLException {
         Connection connection = CONNECTION_POOL.getConnection();
         String insertInto = "INSERT INTO employees(first_name, last_name, position, company_id, salary_id) VALUES (?, ?, ?, ?, ?)";
         connection.setAutoCommit(false);
@@ -36,7 +36,6 @@ public class EmployeeRepositoryImpl implements EmployeeRepository {
             connection.setAutoCommit(true);
             CONNECTION_POOL.releaseConnection(connection);
         }
-        return employee;
     }
 
     @Override

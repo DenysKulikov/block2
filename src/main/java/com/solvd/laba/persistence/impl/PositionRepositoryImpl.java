@@ -9,7 +9,7 @@ import java.sql.*;
 public class PositionRepositoryImpl implements PositionRepository {
     private static final ConnectionPool CONNECTION_POOL = ConnectionPool.getInstance();
     @Override
-    public Position crete(Position position) {
+    public void crete(Position position) {
         Connection connection = CONNECTION_POOL.getConnection();
         String insertInto = "INSERT INTO positions(position, has_car) VALUES (?, ?) ";
 
@@ -23,7 +23,6 @@ public class PositionRepositoryImpl implements PositionRepository {
         } finally {
             CONNECTION_POOL.releaseConnection(connection);
         }
-        return position;
     }
 
     @Override

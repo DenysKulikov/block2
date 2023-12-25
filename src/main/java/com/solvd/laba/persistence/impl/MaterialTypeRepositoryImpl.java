@@ -11,7 +11,7 @@ import java.sql.SQLException;
 public class MaterialTypeRepositoryImpl implements MaterialTypeRepository {
     private static final ConnectionPool CONNECTION_POOL = ConnectionPool.getInstance();
     @Override
-    public MaterialType crete(MaterialType materialType) {
+    public void crete(MaterialType materialType) {
         Connection connection = CONNECTION_POOL.getConnection();
         String insertInto = "INSERT INTO material_types (material_type) VALUES (?) ";
 
@@ -24,7 +24,6 @@ public class MaterialTypeRepositoryImpl implements MaterialTypeRepository {
         } finally {
             CONNECTION_POOL.releaseConnection(connection);
         }
-        return materialType;
     }
 
     @Override

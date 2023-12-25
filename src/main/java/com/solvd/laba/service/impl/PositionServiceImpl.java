@@ -12,8 +12,8 @@ public class PositionServiceImpl implements PositionService {
     }
 
     @Override
-    public Position create(Position position) {
-        return positionRepository.crete(position);
+    public void create(Position position) {
+        positionRepository.crete(position);
     }
 
     @Override

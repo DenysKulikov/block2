@@ -14,8 +14,8 @@ public class BuildingApprovalServiceImpl implements BuildingApprovalService {
     }
 
     @Override
-    public BuildingApproval create(BuildingApproval buildingApproval, Long buildingId) throws SQLException {
-        return buildingApprovalRepository.create(buildingApproval, buildingId);
+    public void create(BuildingApproval buildingApproval, Long buildingId) throws SQLException {
+        buildingApprovalRepository.create(buildingApproval, buildingId);
     }
 
     @Override

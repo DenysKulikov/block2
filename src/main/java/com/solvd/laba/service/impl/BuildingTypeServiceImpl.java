@@ -12,8 +12,8 @@ public class BuildingTypeServiceImpl implements BuildingTypeService {
     }
 
     @Override
-    public BuildingType crete(BuildingType buildingType) {
-        return buildingTypeRepository.crete(buildingType);
+    public void crete(BuildingType buildingType) {
+        buildingTypeRepository.crete(buildingType);
     }
 
     @Override

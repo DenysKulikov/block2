@@ -8,7 +8,7 @@ import java.util.List;
 import java.util.Optional;
 
 public interface CompanyRepository {
-    Company create(Company company) throws SQLException;
+    void create(Company company) throws SQLException;
     void delete(Long companyId);
     void update(@Param("company") Company company, @Param("companyId") Long companyId);
     List<Company> findAll();

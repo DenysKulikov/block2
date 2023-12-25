@@ -7,7 +7,7 @@ import java.sql.SQLException;
 import java.util.Optional;
 
 public interface CostEstimateService {
-    CostEstimate create(CostEstimate costEstimate, Long buildingId) throws SQLException;
+    void create(CostEstimate costEstimate, Long buildingId) throws SQLException;
     void delete(Long costEstimateId);
     CostEstimate findById(Long costEstimateId) throws SQLException;
 }

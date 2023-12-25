@@ -14,9 +14,9 @@ public class SalaryServiceImpl implements SalaryService {
     }
 
     @Override
-    public Salary create(Salary salary) {
+    public void create(Salary salary) {
         salary.setId(null);
-        return salaryRepository.create(salary);
+        salaryRepository.create(salary);
     }
 
     @Override

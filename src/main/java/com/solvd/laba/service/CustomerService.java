@@ -7,7 +7,7 @@ import java.sql.SQLException;
 import java.util.Optional;
 
 public interface CustomerService {
-    Customer create(Customer customer, Long paymentId) throws SQLException;
+    void create(Customer customer, Long paymentId) throws SQLException;
     void delete(Long customerId);
     Optional<Customer> findById(Long customerId) throws SQLException;
     void addCustomerToCompany(Long customerId, Long companyId);

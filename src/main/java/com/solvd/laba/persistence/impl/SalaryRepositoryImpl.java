@@ -10,7 +10,7 @@ public class SalaryRepositoryImpl implements SalaryRepository {
     private static final ConnectionPool CONNECTION_POOL = ConnectionPool.getInstance();
 
     @Override
-    public Salary create(Salary salary) {
+    public void create(Salary salary) {
         Connection connection = CONNECTION_POOL.getConnection();
         String insertInto = "INSERT INTO salaries(position, experience, amount) VALUES (?, ?, ?)";
 
@@ -33,8 +33,6 @@ public class SalaryRepositoryImpl implements SalaryRepository {
         } finally {
             CONNECTION_POOL.releaseConnection(connection);
         }
-
-        return salary;
     }
 
     @Override

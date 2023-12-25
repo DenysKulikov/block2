@@ -10,7 +10,7 @@ public class CostEstimateRepositoryIml implements CostEstimateRepository {
     private static final ConnectionPool CONNECTION_POOL = ConnectionPool.getInstance();
 
     @Override
-    public CostEstimate create(CostEstimate costEstimate, Long buildingId) throws SQLException {
+    public void create(CostEstimate costEstimate, Long buildingId) throws SQLException {
         Connection connection = CONNECTION_POOL.getConnection();
         String insertInto = "INSERT INTO cost_estimates (cost, building_id) VALUES (?, ?)";
         connection.setAutoCommit(false);
@@ -33,7 +33,6 @@ public class CostEstimateRepositoryIml implements CostEstimateRepository {
             connection.setAutoCommit(true);
             CONNECTION_POOL.releaseConnection(connection);
         }
-        return costEstimate;
     }
 
     @Override

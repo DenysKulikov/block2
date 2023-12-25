@@ -16,9 +16,9 @@ public class CompanyServiceImpl implements CompanyService {
     }
 
     @Override
-    public Company create(Company company) throws SQLException {
+    public void create(Company company) throws SQLException {
         company.setId(null);
-        return companyRepository.create(company);
+        companyRepository.create(company);
     }
 
     @Override

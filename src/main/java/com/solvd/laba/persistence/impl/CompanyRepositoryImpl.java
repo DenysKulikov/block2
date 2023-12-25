@@ -22,7 +22,7 @@ public class CompanyRepositoryImpl implements CompanyRepository {
             "LEFT JOIN positions p ON e.position = p.position ";
 
     @Override
-    public Company create(Company company) throws SQLException {
+    public void create(Company company) throws SQLException {
         Connection connection = CONNECTION_POOL.getConnection();
         String insertInto = "INSERT INTO companies(company_name) VALUES (?)";
 
@@ -40,7 +40,6 @@ public class CompanyRepositoryImpl implements CompanyRepository {
         } finally {
             CONNECTION_POOL.releaseConnection(connection);
         }
-        return company;
     }
 
     @Override

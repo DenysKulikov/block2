@@ -15,8 +15,8 @@ public class CustomerServiceImpl implements CustomerService {
     }
 
     @Override
-    public Customer create(Customer customer, Long paymentId) throws SQLException {
-        return customerRepository.create(customer, paymentId);
+    public void create(Customer customer, Long paymentId) throws SQLException {
+        customerRepository.create(customer, paymentId);
     }
 
     @Override

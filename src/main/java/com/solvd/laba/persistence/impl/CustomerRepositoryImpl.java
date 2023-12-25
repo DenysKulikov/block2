@@ -10,7 +10,7 @@ public class CustomerRepositoryImpl implements CustomerRepository {
     private static final ConnectionPool CONNECTION_POOL = ConnectionPool.getInstance();
 
     @Override
-    public Customer create(Customer customer, Long paymentId) throws SQLException {
+    public void create(Customer customer, Long paymentId) throws SQLException {
         Connection connection = CONNECTION_POOL.getConnection();
         String insertInto = "INSERT INTO customers (first_name, last_name, payment_id) VALUES (?, ?, ?)";
 
@@ -30,7 +30,6 @@ public class CustomerRepositoryImpl implements CustomerRepository {
         } finally {
             CONNECTION_POOL.releaseConnection(connection);
         }
-        return customer;
     }
 
     @Override

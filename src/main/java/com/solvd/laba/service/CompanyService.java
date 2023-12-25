@@ -7,7 +7,7 @@ import java.util.List;
 import java.util.Optional;
 
 public interface CompanyService {
-    Company create(Company company) throws SQLException;
+    void create(Company company) throws SQLException;
     void delete(Long companyId);
     List<Company> retrieveAll();
     Optional<Company> findById(Long companyId) throws SQLException;

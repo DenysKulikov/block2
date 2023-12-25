@@ -22,12 +22,12 @@ public class EmployeeServiceImpl implements EmployeeService {
     }
 
     @Override
-    public Employee create(Employee employee, Long companyId, Long salaryId, Position position) throws SQLException {
+    public void create(Employee employee, Long companyId, Long salaryId, Position position) throws SQLException {
         employee.setId(null);
 
         positionService.create(position);
         employee.setHasCar(position.hasCar());
-        return employeeRepository.create(employee, companyId, salaryId, position);
+        employeeRepository.create(employee, companyId, salaryId, position);
     }
 
     @Override

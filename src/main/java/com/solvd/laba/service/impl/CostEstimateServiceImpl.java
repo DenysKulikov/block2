@@ -14,8 +14,8 @@ public class CostEstimateServiceImpl implements CostEstimateService {
     }
 
     @Override
-    public CostEstimate create(CostEstimate costEstimate, Long buildingId) throws SQLException {
-        return costEstimateRepository.create(costEstimate, buildingId);
+    public void create(CostEstimate costEstimate, Long buildingId) throws SQLException {
+        costEstimateRepository.create(costEstimate, buildingId);
     }
 
     @Override

@@ -10,7 +10,7 @@ public class BuildingApprovalRepositoryImpl implements BuildingApprovalRepositor
     private static final ConnectionPool CONNECTION_POOL = ConnectionPool.getInstance();
 
     @Override
-    public BuildingApproval create(BuildingApproval buildingApproval, Long buildingId) throws SQLException {
+    public void create(BuildingApproval buildingApproval, Long buildingId) throws SQLException {
         Connection connection = CONNECTION_POOL.getConnection();
         String insertInto = "INSERT INTO building_approvals (time_needed, approved_by, building_id) VALUES (?, ?, ?);";
         connection.setAutoCommit(false);
@@ -34,7 +34,6 @@ public class BuildingApprovalRepositoryImpl implements BuildingApprovalRepositor
             connection.setAutoCommit(true);
             CONNECTION_POOL.releaseConnection(connection);
         }
-        return buildingApproval;
     }
 
     @Override

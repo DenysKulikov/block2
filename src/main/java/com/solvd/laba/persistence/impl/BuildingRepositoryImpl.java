@@ -11,7 +11,7 @@ import java.util.Optional;
 public class BuildingRepositoryImpl implements BuildingRepository {
     private static final ConnectionPool CONNECTION_POOL = ConnectionPool.getInstance();
     @Override
-    public Building create(Building building, Long companyId) throws SQLException {
+    public void create(Building building, Long companyId) throws SQLException {
         Connection connection = CONNECTION_POOL.getConnection();
         String insertInto = "INSERT INTO buildings (building_type, building_description, company_id) VALUES (?, ?, ?)";
         connection.setAutoCommit(false);
@@ -35,7 +35,6 @@ public class BuildingRepositoryImpl implements BuildingRepository {
             connection.setAutoCommit(true);
             CONNECTION_POOL.releaseConnection(connection);
         }
-        return building;
     }
 
     @Override

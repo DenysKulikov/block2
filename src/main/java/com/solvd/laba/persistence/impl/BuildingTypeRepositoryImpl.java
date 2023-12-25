@@ -11,7 +11,7 @@ import java.sql.SQLException;
 public class BuildingTypeRepositoryImpl implements BuildingTypeRepository {
     private static final ConnectionPool CONNECTION_POOL = ConnectionPool.getInstance();
     @Override
-    public BuildingType crete(BuildingType buildingType) {
+    public void crete(BuildingType buildingType) {
         Connection connection = CONNECTION_POOL.getConnection();
         String insertInto = "INSERT INTO building_types (building_type, base_cost) VALUES (?, ?) ";
 
@@ -25,7 +25,6 @@ public class BuildingTypeRepositoryImpl implements BuildingTypeRepository {
         } finally {
             CONNECTION_POOL.releaseConnection(connection);
         }
-        return buildingType;
     }
 
     @Override

@@ -14,8 +14,8 @@ public class PaymentServiceImpl implements PaymentService {
     }
 
     @Override
-    public Payment create(Payment payment) {
-        return paymentRepository.create(payment);
+    public void create(Payment payment) {
+        paymentRepository.create(payment);
     }
 
     @Override

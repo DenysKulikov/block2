@@ -15,8 +15,8 @@ public class BuildingServiceImpl implements BuildingService {
     }
 
     @Override
-    public Building create(Building building, Long companyId) throws SQLException {
-        return buildingRepository.create(building, companyId);
+    public void create(Building building, Long companyId) throws SQLException {
+        buildingRepository.create(building, companyId);
     }
 
     @Override
