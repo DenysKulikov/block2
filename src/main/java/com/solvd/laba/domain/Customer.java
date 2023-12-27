@@ -4,7 +4,6 @@ public class Customer {
     private Long id;
     private String firstName;
     private String lastName;
-    private Long paymentId;
 
     public Long getId() {
         return id;
@@ -28,13 +27,5 @@ public class Customer {
 
     public void setLastName(String lastName) {
         this.lastName = lastName;
-    }
-
-    public Long getPaymentId() {
-        return paymentId;
-    }
-
-    public void setPaymentId(Long paymentId) {
-        this.paymentId = paymentId;
     }
 }

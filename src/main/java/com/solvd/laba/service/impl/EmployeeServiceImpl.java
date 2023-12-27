@@ -1,38 +1,36 @@
 package com.solvd.laba.service.impl;
 
-import com.solvd.laba.domain.Company;
+
 import com.solvd.laba.domain.Employee;
-import com.solvd.laba.domain.Salary;
-import com.solvd.laba.domain.enums.Position;
+
+import com.solvd.laba.domain.Position;
 import com.solvd.laba.persistence.repositories.EmployeeRepository;
-import com.solvd.laba.service.CompanyService;
 import com.solvd.laba.service.EmployeeService;
-import com.solvd.laba.service.PositionService;
-import com.solvd.laba.service.SalaryService;
 
 import java.sql.SQLException;
 
 public class EmployeeServiceImpl implements EmployeeService {
     private final EmployeeRepository employeeRepository;
-    private final CompanyService companyService;
-    private final SalaryService salaryService;
-    private final PositionService positionService;
 
-    public EmployeeServiceImpl(EmployeeRepository employeeRepository, CompanyService companyService,
-                               SalaryService salaryService, PositionService positionService) {
+    public EmployeeServiceImpl(EmployeeRepository employeeRepository) {
         this.employeeRepository = employeeRepository;
-        this.companyService = companyService;
-        this.salaryService = salaryService;
-        this.positionService = positionService;
     }
 
     @Override
-    public Employee create(Employee employee, Long companyId, Long salaryId, Position position) throws SQLException {
+    public void create(Employee employee, Long companyId, Long salaryId, String positionName) throws SQLException {
         employee.setId(null);
 
-        positionService.create(position);
-        employee.setHasCar(position.hasCar());
-        return employeeRepository.create(employee, companyId, salaryId, position);
+        employeeRepository.create(employee, companyId, salaryId, positionName);
+    }
+
+    @Override
+    public void addEmployeeToBuilding(Long employeeId, Long buildingId) {
+        employeeRepository.addEmployeeToBuilding(employeeId, buildingId);
+    }
+
+    @Override
+    public void deleteEmployeeFromBuilding(Long employeeId, Long buildingId) {
+        employeeRepository.deleteEmployeeFromBuilding(employeeId, buildingId);
     }
 
     @Override

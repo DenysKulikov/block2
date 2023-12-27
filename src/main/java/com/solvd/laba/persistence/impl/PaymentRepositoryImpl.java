@@ -10,7 +10,7 @@ public class PaymentRepositoryImpl implements PaymentRepository {
     private static final ConnectionPool CONNECTION_POOL = ConnectionPool.getInstance();
 
     @Override
-    public Payment create(Payment payment) {
+    public void create(Payment payment) {
         Connection connection = CONNECTION_POOL.getConnection();
         String insertInto = "INSERT INTO payments (amount, payment_date) VALUES (?, ?)";
 
@@ -29,7 +29,6 @@ public class PaymentRepositoryImpl implements PaymentRepository {
         } finally {
             CONNECTION_POOL.releaseConnection(connection);
         }
-        return payment;
     }
 
     @Override

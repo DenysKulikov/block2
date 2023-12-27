@@ -4,7 +4,6 @@ public class BuildingApproval {
     private Long id;
     private String time_needed;
     private String approved_by;
-    private Long buildingId;
 
     public Long getId() {
         return id;
@@ -28,13 +27,5 @@ public class BuildingApproval {
 
     public void setApproved_by(String approved_by) {
         this.approved_by = approved_by;
-    }
-
-    public Long getBuildingId() {
-        return buildingId;
-    }
-
-    public void setBuildingId(Long buildingId) {
-        this.buildingId = buildingId;
     }
 }

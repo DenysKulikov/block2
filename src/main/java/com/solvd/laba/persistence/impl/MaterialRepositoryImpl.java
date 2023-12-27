@@ -10,7 +10,7 @@ public class MaterialRepositoryImpl implements MaterialRepository {
     private static final ConnectionPool CONNECTION_POOL = ConnectionPool.getInstance();
 
     @Override
-    public Material create(Material material) throws SQLException {
+    public void create(Material material) throws SQLException {
         Connection connection = CONNECTION_POOL.getConnection();
         String insertInto = "INSERT INTO materials (material_name, amount, price, material_type) VALUES (?, ?, ?, ?)";
 
@@ -18,7 +18,7 @@ public class MaterialRepositoryImpl implements MaterialRepository {
             preparedStatement.setString(1, material.getName());
             preparedStatement.setLong(2, material.getAmount());
             preparedStatement.setBigDecimal(3, material.getPrice());
-            preparedStatement.setString(4, material.getMaterialType().name());
+            preparedStatement.setString(4, material.getMaterialType().getType());
 
             preparedStatement.executeUpdate();
 
@@ -31,7 +31,6 @@ public class MaterialRepositoryImpl implements MaterialRepository {
         } finally {
             CONNECTION_POOL.releaseConnection(connection);
         }
-        return material;
     }
 
     @Override

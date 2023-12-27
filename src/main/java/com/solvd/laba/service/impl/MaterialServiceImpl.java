@@ -14,8 +14,8 @@ public class MaterialServiceImpl implements MaterialService {
     }
 
     @Override
-    public Material create(Material material) throws SQLException {
-        return materialRepository.create(material);
+    public void create(Material material) throws SQLException {
+        materialRepository.create(material);
     }
 
     @Override

@@ -1,11 +1,13 @@
 package com.solvd.laba.service;
 
+import com.solvd.laba.domain.Company;
 import com.solvd.laba.domain.CostEstimate;
 
 import java.sql.SQLException;
+import java.util.Optional;
 
 public interface CostEstimateService {
-    CostEstimate create(CostEstimate costEstimate, Long buildingId) throws SQLException;
+    void create(CostEstimate costEstimate, Long buildingId) throws SQLException;
     void delete(Long costEstimateId);
-    Long getCostEstimateId(CostEstimate costEstimate) throws SQLException;
+    CostEstimate findById(Long costEstimateId) throws SQLException;
 }

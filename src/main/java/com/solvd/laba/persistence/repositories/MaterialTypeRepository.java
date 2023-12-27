@@ -1,9 +1,8 @@
 package com.solvd.laba.persistence.repositories;
 
-import com.solvd.laba.domain.enums.BuildingType;
-import com.solvd.laba.domain.enums.MaterialType;
+import com.solvd.laba.domain.MaterialType;
 
 public interface MaterialTypeRepository {
-    MaterialType crete(MaterialType materialType);
+    void crete(MaterialType materialType);
     void delete(MaterialType materialType);
 }

@@ -1,6 +1,6 @@
 package com.solvd.laba.domain;
 
-import com.solvd.laba.domain.enums.MaterialType;
+import com.solvd.laba.domain.MaterialType;
 
 import java.math.BigDecimal;
 

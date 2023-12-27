@@ -1,8 +1,8 @@
 package com.solvd.laba.service;
 
-import com.solvd.laba.domain.enums.BuildingType;
+import com.solvd.laba.domain.BuildingType;
 
 public interface BuildingTypeService {
-    BuildingType crete(BuildingType buildingType);
+    void create(BuildingType buildingType);
     void delete(BuildingType buildingType);
 }

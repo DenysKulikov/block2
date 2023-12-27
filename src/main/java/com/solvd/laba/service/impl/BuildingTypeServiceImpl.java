@@ -1,6 +1,6 @@
 package com.solvd.laba.service.impl;
 
-import com.solvd.laba.domain.enums.BuildingType;
+import com.solvd.laba.domain.BuildingType;
 import com.solvd.laba.persistence.repositories.BuildingTypeRepository;
 import com.solvd.laba.service.BuildingTypeService;
 
@@ -12,8 +12,8 @@ public class BuildingTypeServiceImpl implements BuildingTypeService {
     }
 
     @Override
-    public BuildingType crete(BuildingType buildingType) {
-        return buildingTypeRepository.crete(buildingType);
+    public void create(BuildingType buildingType) {
+        buildingTypeRepository.create(buildingType);
     }
 
     @Override

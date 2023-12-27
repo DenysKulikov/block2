@@ -1,8 +1,8 @@
 package com.solvd.laba.service;
 
-import com.solvd.laba.domain.enums.MaterialType;
+import com.solvd.laba.domain.MaterialType;
 
 public interface MaterialTypeService {
-    MaterialType crete(MaterialType materialType);
+    void crete(MaterialType materialType);
     void delete(MaterialType materialType);
 }

@@ -1,14 +1,14 @@
 package com.solvd.laba.service;
 
 import com.solvd.laba.domain.Company;
-import com.solvd.laba.domain.Salary;
 
 import java.sql.SQLException;
 import java.util.List;
+import java.util.Optional;
 
 public interface CompanyService {
-    Company create(Company company) throws SQLException;
+    void create(Company company) throws SQLException;
     void delete(Long companyId);
     List<Company> retrieveAll();
-    Long getCompanyId(Company company) throws SQLException;
+    Optional<Company> findById(Long companyId) throws SQLException;
 }

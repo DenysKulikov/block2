@@ -10,7 +10,7 @@ public class CostEstimateRepositoryIml implements CostEstimateRepository {
     private static final ConnectionPool CONNECTION_POOL = ConnectionPool.getInstance();
 
     @Override
-    public CostEstimate create(CostEstimate costEstimate, Long buildingId) throws SQLException {
+    public void create(CostEstimate costEstimate, Long buildingId) throws SQLException {
         Connection connection = CONNECTION_POOL.getConnection();
         String insertInto = "INSERT INTO cost_estimates (cost, building_id) VALUES (?, ?)";
         connection.setAutoCommit(false);
@@ -33,7 +33,6 @@ public class CostEstimateRepositoryIml implements CostEstimateRepository {
             connection.setAutoCommit(true);
             CONNECTION_POOL.releaseConnection(connection);
         }
-        return costEstimate;
     }
 
     @Override
@@ -52,26 +51,7 @@ public class CostEstimateRepositoryIml implements CostEstimateRepository {
     }
 
     @Override
-    public Long getCostEstimateId(CostEstimate costEstimate) throws SQLException {
-        Connection connection = CONNECTION_POOL.getConnection();
-        String select = "SELECT ca.id FROM cost_estimates ca WHERE ca.id = ?";
-        connection.setReadOnly(true);
-
-        try (PreparedStatement preparedStatement = connection.prepareStatement(select)) {
-            preparedStatement.setLong(1, costEstimate.getId());
-
-            ResultSet resultSet = preparedStatement.executeQuery();
-            if (resultSet.next()) {
-                costEstimate.setId(resultSet.getLong("id"));
-                return resultSet.getLong("id");
-            } else {
-                throw new RuntimeException("Building record not found for the provided id.");
-            }
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        } finally {
-            connection.setReadOnly(false);
-            CONNECTION_POOL.releaseConnection(connection);
-        }
+    public CostEstimate findById(Long costEstimateId) throws SQLException {
+        return null;
     }
 }

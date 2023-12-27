@@ -1,15 +1,14 @@
 package com.solvd.laba.domain;
 
-import com.solvd.laba.domain.enums.Position;
+import java.util.List;
 
 public class Employee {
     private Long id;
     private String firstName;
     private String lastName;
-    private Position position;
-    private long companyId;
-    private long salaryId;
+    private String position;
     private boolean hasCar;
+    private List<Building> buildings;
 
     public Long getId() {
         return id;
@@ -35,31 +34,27 @@ public class Employee {
         this.lastName = lastName;
     }
 
-    public Position getPosition() {
+    public String getPosition() {
         return position;
     }
 
-    public void setPosition(Position position) {
+    public void setPosition(String position) {
         this.position = position;
     }
 
-    public long getCompanyId() {
-        return companyId;
-    }
-
-    public void setCompanyId(long companyId) {
-        this.companyId = companyId;
-    }
-
-    public long getSalaryId() {
-        return salaryId;
-    }
-
-    public void setSalaryId(long salaryId) {
-        this.salaryId = salaryId;
+    public boolean isHasCar() {
+        return hasCar;
     }
 
     public void setHasCar(boolean hasCar) {
         this.hasCar = hasCar;
+    }
+
+    public List<Building> getBuildings() {
+        return buildings;
+    }
+
+    public void setBuildings(List<Building> buildings) {
+        this.buildings = buildings;
     }
 }

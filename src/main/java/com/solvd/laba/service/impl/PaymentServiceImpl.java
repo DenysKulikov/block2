@@ -11,12 +11,11 @@ public class PaymentServiceImpl implements PaymentService {
 
     public PaymentServiceImpl(PaymentRepository paymentRepository) {
         this.paymentRepository = paymentRepository;
-
     }
 
     @Override
-    public Payment create(Payment payment) {
-        return paymentRepository.create(payment);
+    public void create(Payment payment) {
+        paymentRepository.create(payment);
     }
 
     @Override

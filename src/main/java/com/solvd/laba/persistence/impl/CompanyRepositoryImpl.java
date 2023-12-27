@@ -7,10 +7,7 @@ import com.solvd.laba.persistence.ConnectionPool;
 import com.solvd.laba.persistence.repositories.CompanyRepository;
 
 import java.sql.*;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class CompanyRepositoryImpl implements CompanyRepository {
     private static final ConnectionPool CONNECTION_POOL = ConnectionPool.getInstance();
@@ -25,7 +22,7 @@ public class CompanyRepositoryImpl implements CompanyRepository {
             "LEFT JOIN positions p ON e.position = p.position ";
 
     @Override
-    public Company create(Company company) throws SQLException {
+    public void create(Company company) throws SQLException {
         Connection connection = CONNECTION_POOL.getConnection();
         String insertInto = "INSERT INTO companies(company_name) VALUES (?)";
 
@@ -43,7 +40,6 @@ public class CompanyRepositoryImpl implements CompanyRepository {
         } finally {
             CONNECTION_POOL.releaseConnection(connection);
         }
-        return company;
     }
 
     @Override
@@ -54,6 +50,26 @@ public class CompanyRepositoryImpl implements CompanyRepository {
         try (PreparedStatement preparedStatement = connection.prepareStatement(delete)) {
             preparedStatement.setLong(1, companyId);
             preparedStatement.executeUpdate();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } finally {
+            CONNECTION_POOL.releaseConnection(connection);
+        }
+    }
+
+    @Override
+    public void update(Company company, Long companyId) {
+        Connection connection = CONNECTION_POOL.getConnection();
+        String updateQuery = "UPDATE companies SET company_name = ? WHERE id = ?";
+
+        try (PreparedStatement preparedStatement = connection.prepareStatement(updateQuery)) {
+            preparedStatement.setString(1, company.getName());
+            preparedStatement.setLong(2, companyId);
+
+            int rowsAffected = preparedStatement.executeUpdate();
+            if (rowsAffected == 0) {
+                throw new RuntimeException("No company found with id: " + companyId);
+            }
         } catch (SQLException e) {
             throw new RuntimeException(e);
         } finally {
@@ -77,20 +93,23 @@ public class CompanyRepositoryImpl implements CompanyRepository {
         return companies;
     }
 
-    public Long getCompanyId(Company company) throws SQLException {
+    @Override
+    public Optional<Company> findById(Long companyId) throws SQLException {
         Connection connection = CONNECTION_POOL.getConnection();
-        String select = "SELECT c.id FROM companies c WHERE c.company_name = ?";
+        String select = "SELECT c.id, c.company_name FROM companies c WHERE c.id = ?";
         connection.setReadOnly(true);
 
-        try (PreparedStatement preparedStatement = connection.prepareStatement(select)) {
-            preparedStatement.setString(1, company.getName());
+        try (PreparedStatement preparedStatement = connection.prepareStatement(select, Statement.RETURN_GENERATED_KEYS)) {
+            preparedStatement.setLong(1, companyId);
 
             ResultSet resultSet = preparedStatement.executeQuery();
             if (resultSet.next()) {
+                Company company = new Company();
                 company.setId(resultSet.getLong("id"));
-                return resultSet.getLong("id");
+                company.setName(resultSet.getString("company_name"));
+                return Optional.of(company);
             } else {
-                throw new RuntimeException("Company record not found for the provided company name.");
+                return Optional.empty();
             }
         } catch (SQLException e) {
             throw new RuntimeException(e);
@@ -99,6 +118,7 @@ public class CompanyRepositoryImpl implements CompanyRepository {
             CONNECTION_POOL.releaseConnection(connection);
         }
     }
+
 
     private List<Company> mapCompanies(ResultSet resultSet) throws SQLException {
         List<Company> companies = new ArrayList<>();
@@ -130,9 +150,6 @@ public class CompanyRepositoryImpl implements CompanyRepository {
                     salary.setExperience(resultSet.getString("employee_experience"));
                     salary.setAmount(resultSet.getBigDecimal("salary_amount"));
                 }
-
-                boolean hasCar = resultSet.getBoolean("does_employee_has_car");
-                employee.setHasCar(hasCar);
 
                 company.addEmployee(employee);
             }
