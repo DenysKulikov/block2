@@ -1,8 +1,8 @@
 package com.solvd.laba.persistence.repositories;
 
-import com.solvd.laba.domain.enums.Position;
+import com.solvd.laba.domain.Position;
 
 public interface PositionRepository {
-    void crete(Position position);
+    void create(Position position);
     void delete(Position position);
 }

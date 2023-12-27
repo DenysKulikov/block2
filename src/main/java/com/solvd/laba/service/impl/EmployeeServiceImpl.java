@@ -1,33 +1,26 @@
 package com.solvd.laba.service.impl;
 
-import com.solvd.laba.domain.Company;
+
 import com.solvd.laba.domain.Employee;
-import com.solvd.laba.domain.Salary;
-import com.solvd.laba.domain.enums.Position;
+
+import com.solvd.laba.domain.Position;
 import com.solvd.laba.persistence.repositories.EmployeeRepository;
-import com.solvd.laba.service.CompanyService;
 import com.solvd.laba.service.EmployeeService;
-import com.solvd.laba.service.PositionService;
-import com.solvd.laba.service.SalaryService;
 
 import java.sql.SQLException;
 
 public class EmployeeServiceImpl implements EmployeeService {
     private final EmployeeRepository employeeRepository;
-    private final PositionService positionService;
 
-    public EmployeeServiceImpl(EmployeeRepository employeeRepository, PositionService positionService) {
+    public EmployeeServiceImpl(EmployeeRepository employeeRepository) {
         this.employeeRepository = employeeRepository;
-        this.positionService = positionService;
     }
 
     @Override
-    public void create(Employee employee, Long companyId, Long salaryId, Position position) throws SQLException {
+    public void create(Employee employee, Long companyId, Long salaryId, String positionName) throws SQLException {
         employee.setId(null);
 
-        positionService.create(position);
-        employee.setHasCar(position.hasCar());
-        employeeRepository.create(employee, companyId, salaryId, position);
+        employeeRepository.create(employee, companyId, salaryId, positionName);
     }
 
     @Override

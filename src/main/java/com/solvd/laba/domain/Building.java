@@ -1,6 +1,6 @@
 package com.solvd.laba.domain;
 
-import com.solvd.laba.domain.enums.BuildingType;
+import com.solvd.laba.domain.BuildingType;
 
 public class Building {
     private Long id;

@@ -1,9 +1,9 @@
 package com.solvd.laba;
 
 import com.solvd.laba.domain.*;
-import com.solvd.laba.domain.enums.BuildingType;
-import com.solvd.laba.domain.enums.MaterialType;
-import com.solvd.laba.domain.enums.Position;
+import com.solvd.laba.domain.BuildingType;
+import com.solvd.laba.domain.MaterialType;
+import com.solvd.laba.domain.Position;
 import com.solvd.laba.persistence.impl.*;
 import com.solvd.laba.persistence.repositories.*;
 import com.solvd.laba.service.*;
@@ -20,15 +20,19 @@ public class Main {
         Company company = new Company();
         company.setName("Bud");
 
+        Position position = new Position();
+        position.setPositionName("BUILDER");
+        position.setHasCar(false);
+
         Salary salary = new Salary();
-        salary.setPosition(Position.BUILDER.name());
+        salary.setPosition(position.getPositionName());
         salary.setAmount(BigDecimal.valueOf(100000.00));
         salary.setExperience("7 years");
 
         Employee employee = new Employee();
         employee.setFirstName("Alice");
         employee.setLastName("Johnson");
-        employee.setPosition(Position.BUILDER);
+        employee.setPosition(position.getPositionName());
 
         Payment payment = new Payment();
         payment.setAmount(BigDecimal.valueOf(5000.00));
@@ -38,8 +42,12 @@ public class Main {
         customer.setFirstName("John");
         customer.setLastName("Doe");
 
+        BuildingType buildingType = new BuildingType();
+        buildingType.setType("COMMERCIAL");
+        buildingType.setBaseCost(BigDecimal.valueOf(180_000.00));
+
         Building building = new Building();
-        building.setBuildingType(BuildingType.COMMERCIAL);
+        building.setBuildingType(buildingType);
         building.setBuildingDescription("Commercial");
 
         BuildingApproval buildingApproval = new BuildingApproval();
@@ -49,11 +57,14 @@ public class Main {
         CostEstimate costEstimate = new CostEstimate();
         costEstimate.setCost(BigDecimal.valueOf(1000000.00));
 
+        MaterialType materialType = new MaterialType();
+        materialType.setType("STEEL");
+
         Material material = new Material();
         material.setName("Nails");
         material.setAmount(100000L);
         material.setPrice(BigDecimal.valueOf(100000));
-        material.setMaterialType(MaterialType.STEEL);
+        material.setMaterialType(materialType);
 
         CompanyRepository companyRepository = new CompanyRepositoryImpl();
         CompanyService companyService = new CompanyServiceImpl(companyRepository);
@@ -63,12 +74,13 @@ public class Main {
 
         PositionRepository positionRepository = new PositionRepositoryImpl();
         PositionService positionService = new PositionServiceImpl(positionRepository);
+        positionService.create(position);
 
         EmployeeRepository employeeRepository = new EmployeeRepositoryImpl();
-        EmployeeServiceImpl employeeService = new EmployeeServiceImpl(employeeRepository, positionService);
+        EmployeeServiceImpl employeeService = new EmployeeServiceImpl(employeeRepository);
         companyService.create(company);
         salaryService.create(salary);
-        employeeService.create(employee, company.getId(), salary.getId(), Position.BUILDER);
+        employeeService.create(employee, company.getId(), salary.getId(), position.getPositionName());
 
         PaymentRepository paymentRepository = new PaymentRepositoryImpl();
         PaymentService paymentService = new PaymentServiceImpl(paymentRepository);
@@ -81,7 +93,7 @@ public class Main {
 
         BuildingTypeRepository buildingTypeRepository = new BuildingTypeRepositoryImpl();
         BuildingTypeService buildingTypeService = new BuildingTypeServiceImpl(buildingTypeRepository);
-        buildingTypeService.crete(BuildingType.COMMERCIAL);
+        buildingTypeService.create(building.getBuildingType());
 
         BuildingRepository buildingRepository = new BuildingRepositoryImpl();
         BuildingService buildingService = new BuildingServiceImpl(buildingRepository);
@@ -98,7 +110,7 @@ public class Main {
 
         MaterialTypeRepository materialTypeRepository = new MaterialTypeRepositoryImpl();
         MaterialTypeService materialTypeService = new MaterialTypeServiceImpl(materialTypeRepository);
-        materialTypeService.crete(MaterialType.STEEL);
+        materialTypeService.crete(material.getMaterialType());
 
         MaterialRepository materialRepository = new MaterialRepositoryImpl();
         MaterialService materialService = new MaterialServiceImpl(materialRepository);
@@ -123,7 +135,7 @@ public class Main {
 
         materialRepository.deleteMaterialFromBuilding(material.getId(), building.getId());
         materialRepository.delete(material.getId());
-        materialTypeRepository.delete(MaterialType.STEEL);
+        materialTypeRepository.delete(materialType);
         buildingApprovalRepository.delete(buildingApproval.getId());
         costEstimateRepository.delete(costEstimate.getId());
         buildingRepository.delete(building.getId());
@@ -131,6 +143,6 @@ public class Main {
 
         companyRepository.delete(company.getId());
         salaryRepository.delete(salary.getId());
-        positionRepository.delete(Position.BUILDER);
+        positionRepository.delete(position);
     }
 }

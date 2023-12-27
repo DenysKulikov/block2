@@ -5,6 +5,7 @@ import com.solvd.laba.persistence.repositories.SalaryRepository;
 import com.solvd.laba.service.SalaryService;
 
 import java.sql.SQLException;
+import java.util.Optional;
 
 public class SalaryServiceImpl implements SalaryService {
     private final SalaryRepository salaryRepository;
@@ -25,7 +26,7 @@ public class SalaryServiceImpl implements SalaryService {
     }
 
     @Override
-    public Long getSalaryId(Salary salary) throws SQLException {
-        return salaryRepository.getSalaryId(salary);
+    public Optional<Salary> findById(Long salaryId) throws SQLException {
+        return salaryRepository.findById(salaryId);
     }
 }

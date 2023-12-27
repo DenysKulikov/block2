@@ -1,8 +1,8 @@
 package com.solvd.laba.persistence.repositories;
 
-import com.solvd.laba.domain.enums.BuildingType;
+import com.solvd.laba.domain.BuildingType;
 
 public interface BuildingTypeRepository {
-    void crete(BuildingType buildingType);
+    void create(BuildingType buildingType);
     void delete(BuildingType buildingType);
 }

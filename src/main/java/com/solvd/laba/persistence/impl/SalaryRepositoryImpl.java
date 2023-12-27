@@ -5,6 +5,7 @@ import com.solvd.laba.persistence.ConnectionPool;
 import com.solvd.laba.persistence.repositories.SalaryRepository;
 
 import java.sql.*;
+import java.util.Optional;
 
 public class SalaryRepositoryImpl implements SalaryRepository {
     private static final ConnectionPool CONNECTION_POOL = ConnectionPool.getInstance();
@@ -51,18 +52,24 @@ public class SalaryRepositoryImpl implements SalaryRepository {
     }
 
     @Override
-    public Long getSalaryId(Salary salary) throws SQLException {
+    public Optional<Salary> findById(Long salaryId) throws SQLException {
         Connection connection = CONNECTION_POOL.getConnection();
-        String select = "SELECT s.id FROM salaries s WHERE s.experience = ?";
+        String select = "SELECT s.id, s.position, s.experience, s.amount FROM salaries s WHERE s.id = ?";
         connection.setReadOnly(true);
 
         try (PreparedStatement preparedStatement = connection.prepareStatement(select, Statement.RETURN_GENERATED_KEYS)) {
-            preparedStatement.setString(1, salary.getExperience());
+            preparedStatement.setLong(1, salaryId);
 
             ResultSet resultSet = preparedStatement.executeQuery();
-            while (resultSet.next()) {
+            if (resultSet.next()) {
+                Salary salary = new Salary();
                 salary.setId(resultSet.getLong("id"));
-                return resultSet.getLong("id");
+                salary.setPosition(resultSet.getString("position"));
+                salary.setExperience(resultSet.getString("experience"));
+                salary.setAmount(resultSet.getBigDecimal("amount"));
+                return Optional.of(salary);
+            } else {
+                return Optional.empty();
             }
         } catch (SQLException e) {
             throw new RuntimeException(e);
@@ -70,6 +77,5 @@ public class SalaryRepositoryImpl implements SalaryRepository {
             connection.setReadOnly(false);
             CONNECTION_POOL.releaseConnection(connection);
         }
-        return salary.getId();
     }
 }

@@ -1,6 +1,6 @@
 package com.solvd.laba.persistence.impl;
 
-import com.solvd.laba.domain.enums.MaterialType;
+import com.solvd.laba.domain.MaterialType;
 import com.solvd.laba.persistence.ConnectionPool;
 import com.solvd.laba.persistence.repositories.MaterialTypeRepository;
 
@@ -16,7 +16,7 @@ public class MaterialTypeRepositoryImpl implements MaterialTypeRepository {
         String insertInto = "INSERT INTO material_types (material_type) VALUES (?) ";
 
         try (PreparedStatement preparedStatement = connection.prepareStatement(insertInto)) {
-            preparedStatement.setString(1, materialType.name());
+            preparedStatement.setString(1, materialType.getType());
 
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
@@ -32,7 +32,7 @@ public class MaterialTypeRepositoryImpl implements MaterialTypeRepository {
         String delete = "DELETE FROM material_types mt WHERE mt.material_type = ? ";
 
         try (PreparedStatement preparedStatement = connection.prepareStatement(delete)) {
-            preparedStatement.setString(1, materialType.name());
+            preparedStatement.setString(1, materialType.getType());
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
             throw new RuntimeException(e);

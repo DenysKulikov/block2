@@ -1,6 +1,6 @@
 package com.solvd.laba.service;
 
-import com.solvd.laba.domain.enums.Position;
+import com.solvd.laba.domain.Position;
 
 public interface PositionService {
     void create(Position position);

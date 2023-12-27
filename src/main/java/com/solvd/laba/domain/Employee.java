@@ -1,14 +1,12 @@
 package com.solvd.laba.domain;
 
-import com.solvd.laba.domain.enums.Position;
-
 import java.util.List;
 
 public class Employee {
     private Long id;
     private String firstName;
     private String lastName;
-    private Position position;
+    private String position;
     private boolean hasCar;
     private List<Building> buildings;
 
@@ -36,11 +34,11 @@ public class Employee {
         this.lastName = lastName;
     }
 
-    public Position getPosition() {
+    public String getPosition() {
         return position;
     }
 
-    public void setPosition(Position position) {
+    public void setPosition(String position) {
         this.position = position;
     }
 

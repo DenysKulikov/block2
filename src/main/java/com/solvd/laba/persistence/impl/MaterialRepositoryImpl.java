@@ -18,7 +18,7 @@ public class MaterialRepositoryImpl implements MaterialRepository {
             preparedStatement.setString(1, material.getName());
             preparedStatement.setLong(2, material.getAmount());
             preparedStatement.setBigDecimal(3, material.getPrice());
-            preparedStatement.setString(4, material.getMaterialType().name());
+            preparedStatement.setString(4, material.getMaterialType().getType());
 
             preparedStatement.executeUpdate();
 

@@ -1,7 +1,7 @@
 package com.solvd.laba.persistence.impl;
 
 import com.solvd.laba.domain.Building;
-import com.solvd.laba.domain.enums.BuildingType;
+import com.solvd.laba.domain.BuildingType;
 import com.solvd.laba.persistence.ConnectionPool;
 import com.solvd.laba.persistence.repositories.BuildingRepository;
 
@@ -17,7 +17,7 @@ public class BuildingRepositoryImpl implements BuildingRepository {
         connection.setAutoCommit(false);
 
         try (PreparedStatement preparedStatement = connection.prepareStatement(insertInto, Statement.RETURN_GENERATED_KEYS)) {
-            preparedStatement.setString(1, String.valueOf(building.getBuildingType()));
+            preparedStatement.setString(1, building.getBuildingType().getType());
             preparedStatement.setString(2, building.getBuildingDescription());
             preparedStatement.setLong(3, companyId);
 
@@ -65,7 +65,7 @@ public class BuildingRepositoryImpl implements BuildingRepository {
             if (resultSet.next()) {
                 Building building = new Building();
                 building.setId(resultSet.getLong("id"));
-                building.setBuildingType(BuildingType.valueOf(resultSet.getString("building_type")));
+                building.setBuildingType(new BuildingType().setType(resultSet.getString("building_type")));
                 building.setBuildingDescription(resultSet.getString("building_description"));
                 return Optional.of(building);
             } else {

@@ -1,10 +1,8 @@
 package com.solvd.laba.service.impl;
 
-import com.solvd.laba.domain.enums.MaterialType;
+import com.solvd.laba.domain.MaterialType;
 import com.solvd.laba.persistence.repositories.MaterialTypeRepository;
 import com.solvd.laba.service.MaterialTypeService;
-
-import java.sql.SQLException;
 
 public class MaterialTypeServiceImpl implements MaterialTypeService {
     private final MaterialTypeRepository materialTypeRepository;
