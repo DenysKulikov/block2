@@ -1,0 +1,94 @@
+19:36:39.584 [main] TRACE com.solvd.laba.MyBatisMain - Company id: 121
+19:36:39.586 [main] TRACE com.solvd.laba.MyBatisMain - Salary id: 47
+17:25:32.545 [main] TRACE com.solvd.laba.MyBatisMain - Company id: 143
+17:25:32.547 [main] TRACE com.solvd.laba.MyBatisMain - Salary id: 69
+17:25:32.547 [main] TRACE com.solvd.laba.MyBatisMain - Employee id: null
+17:32:23.426 [main] TRACE com.solvd.laba.MyBatisMain - Company id: 146
+17:32:23.427 [main] TRACE com.solvd.laba.MyBatisMain - Salary id: 72
+17:32:23.428 [main] TRACE com.solvd.laba.MyBatisMain - Employee id: 43
+17:35:32.915 [main] TRACE com.solvd.laba.MyBatisMain - Company id: 147
+17:35:32.917 [main] TRACE com.solvd.laba.MyBatisMain - Salary id: 73
+17:35:32.917 [main] TRACE com.solvd.laba.MyBatisMain - Employee id: 44
+17:35:41.595 [main] TRACE com.solvd.laba.MyBatisMain - Company id: 148
+17:35:41.597 [main] TRACE com.solvd.laba.MyBatisMain - Salary id: 74
+17:35:41.597 [main] TRACE com.solvd.laba.MyBatisMain - Employee id: 45
+18:23:28.025 [main] TRACE com.solvd.laba.MyBatisMain - Company id: 152
+18:23:28.026 [main] TRACE com.solvd.laba.MyBatisMain - Salary id: 78
+18:23:28.026 [main] TRACE com.solvd.laba.MyBatisMain - Employee id: 49
+18:23:28.027 [main] TRACE com.solvd.laba.MyBatisMain - Payment id: 28
+19:56:20.284 [main] TRACE com.solvd.laba.MyBatisMain - Company id: 153
+19:56:20.286 [main] TRACE com.solvd.laba.MyBatisMain - Salary id: 79
+19:56:20.286 [main] TRACE com.solvd.laba.MyBatisMain - Employee id: 50
+19:56:20.286 [main] TRACE com.solvd.laba.MyBatisMain - Payment id: 29
+19:56:20.287 [main] TRACE com.solvd.laba.MyBatisMain - Customer id: 24
+20:09:02.565 [main] TRACE com.solvd.laba.MyBatisMain - Company id: 155
+20:09:02.567 [main] TRACE com.solvd.laba.MyBatisMain - Salary id: 81
+20:09:02.567 [main] TRACE com.solvd.laba.MyBatisMain - Employee id: 52
+20:09:02.567 [main] TRACE com.solvd.laba.MyBatisMain - Payment id: 31
+20:09:02.567 [main] TRACE com.solvd.laba.MyBatisMain - Customer id: 25
+20:12:16.819 [main] TRACE com.solvd.laba.MyBatisMain - Company id: 156
+20:12:16.821 [main] TRACE com.solvd.laba.MyBatisMain - Salary id: 82
+20:12:16.821 [main] TRACE com.solvd.laba.MyBatisMain - Employee id: 53
+20:12:16.821 [main] TRACE com.solvd.laba.MyBatisMain - Payment id: 32
+20:12:16.821 [main] TRACE com.solvd.laba.MyBatisMain - Customer id: 26
+20:46:05.282 [main] TRACE com.solvd.laba.MyBatisMain - Company id: 157
+20:46:05.284 [main] TRACE com.solvd.laba.MyBatisMain - Salary id: 83
+20:46:05.284 [main] TRACE com.solvd.laba.MyBatisMain - Employee id: 54
+20:46:05.284 [main] TRACE com.solvd.laba.MyBatisMain - Payment id: 33
+20:46:05.284 [main] TRACE com.solvd.laba.MyBatisMain - Customer id: 27
+20:46:05.284 [main] TRACE com.solvd.laba.MyBatisMain - Building id: 16
+20:50:48.693 [main] TRACE com.solvd.laba.MyBatisMain - Company id: 158
+20:50:48.695 [main] TRACE com.solvd.laba.MyBatisMain - Salary id: 84
+20:50:48.695 [main] TRACE com.solvd.laba.MyBatisMain - Employee id: 55
+20:50:48.695 [main] TRACE com.solvd.laba.MyBatisMain - Payment id: 34
+20:50:48.695 [main] TRACE com.solvd.laba.MyBatisMain - Customer id: 28
+20:50:48.695 [main] TRACE com.solvd.laba.MyBatisMain - Building id: 17
+20:53:38.983 [main] TRACE com.solvd.laba.MyBatisMain - Company id: 159
+20:53:38.984 [main] TRACE com.solvd.laba.MyBatisMain - Salary id: 85
+20:53:38.984 [main] TRACE com.solvd.laba.MyBatisMain - Employee id: 56
+20:53:38.985 [main] TRACE com.solvd.laba.MyBatisMain - Payment id: 35
+20:53:38.985 [main] TRACE com.solvd.laba.MyBatisMain - Customer id: 29
+20:53:38.985 [main] TRACE com.solvd.laba.MyBatisMain - Building id: 18
+12:22:50.854 [main] TRACE com.solvd.laba.MyBatisMain - Company id: 161
+12:22:50.873 [main] TRACE com.solvd.laba.MyBatisMain - Salary id: 87
+12:22:50.874 [main] TRACE com.solvd.laba.MyBatisMain - Employee id: 58
+12:22:50.874 [main] TRACE com.solvd.laba.MyBatisMain - Payment id: 37
+12:22:50.874 [main] TRACE com.solvd.laba.MyBatisMain - Customer id: 31
+12:22:50.874 [main] TRACE com.solvd.laba.MyBatisMain - Building id: 19
+12:22:50.874 [main] TRACE com.solvd.laba.MyBatisMain - Building Approval id: null
+12:22:50.878 [main] TRACE com.solvd.laba.MyBatisMain - CostEstimate (for building) id: null
+15:54:06.072 [main] TRACE com.solvd.laba.MyBatisMain - Company id: 164
+15:54:06.074 [main] TRACE com.solvd.laba.MyBatisMain - Salary id: 90
+15:54:06.074 [main] TRACE com.solvd.laba.MyBatisMain - Employee id: 61
+15:54:06.074 [main] TRACE com.solvd.laba.MyBatisMain - Payment id: 40
+15:54:06.074 [main] TRACE com.solvd.laba.MyBatisMain - Customer id: 34
+15:54:06.075 [main] TRACE com.solvd.laba.MyBatisMain - Building id: 21
+15:54:06.075 [main] TRACE com.solvd.laba.MyBatisMain - Building Approval id: 15
+15:54:06.075 [main] TRACE com.solvd.laba.MyBatisMain - CostEstimate (for building) id: 13
+19:00:11.783 [main] TRACE com.solvd.laba.MyBatisMain - Company id: 165
+19:00:11.785 [main] TRACE com.solvd.laba.MyBatisMain - Salary id: 91
+19:00:11.786 [main] TRACE com.solvd.laba.MyBatisMain - Employee id: 62
+19:00:11.786 [main] TRACE com.solvd.laba.MyBatisMain - Payment id: 41
+19:00:11.786 [main] TRACE com.solvd.laba.MyBatisMain - Customer id: 35
+19:00:11.786 [main] TRACE com.solvd.laba.MyBatisMain - Building id: 22
+19:00:11.786 [main] TRACE com.solvd.laba.MyBatisMain - Building Approval id: 16
+19:00:11.786 [main] TRACE com.solvd.laba.MyBatisMain - CostEstimate (for building) id: 14
+19:00:11.786 [main] TRACE com.solvd.laba.MyBatisMain - Material id: 16
+19:27:16.289 [main] TRACE com.solvd.laba.MyBatisMain - Company id: 170
+19:27:16.291 [main] TRACE com.solvd.laba.MyBatisMain - Salary id: 96
+19:27:16.291 [main] TRACE com.solvd.laba.MyBatisMain - Employee id: 67
+19:27:16.291 [main] TRACE com.solvd.laba.MyBatisMain - Payment id: 46
+19:27:16.291 [main] TRACE com.solvd.laba.MyBatisMain - Customer id: 40
+19:27:16.291 [main] TRACE com.solvd.laba.MyBatisMain - Building id: 27
+19:27:16.291 [main] TRACE com.solvd.laba.MyBatisMain - Building Approval id: 21
+19:27:16.291 [main] TRACE com.solvd.laba.MyBatisMain - CostEstimate (for building) id: 19
+19:27:16.292 [main] TRACE com.solvd.laba.MyBatisMain - Material id: 17
+19:31:01.110 [main] TRACE com.solvd.laba.MyBatisMain - Company id: 171
+19:31:01.112 [main] TRACE com.solvd.laba.MyBatisMain - Salary id: 97
+19:31:01.112 [main] TRACE com.solvd.laba.MyBatisMain - Employee id: 68
+19:31:01.112 [main] TRACE com.solvd.laba.MyBatisMain - Payment id: 47
+19:31:01.112 [main] TRACE com.solvd.laba.MyBatisMain - Customer id: 41
+19:31:01.112 [main] TRACE com.solvd.laba.MyBatisMain - Building id: 28
+19:31:01.112 [main] TRACE com.solvd.laba.MyBatisMain - Building Approval id: 22
+19:31:01.112 [main] TRACE com.solvd.laba.MyBatisMain - CostEstimate (for building) id: 20
+19:31:01.112 [main] TRACE com.solvd.laba.MyBatisMain - Material id: 18

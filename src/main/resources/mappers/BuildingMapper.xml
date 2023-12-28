@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.solvd.laba.persistence.repositories.BuildingRepository">
+    <insert id="create" keyColumn="id" keyProperty="building.id" useGeneratedKeys="true">
+        INSERT INTO buildings (building_type, building_description, company_id)
+        VALUES (#{building.buildingType.type}, #{building.buildingDescription}, #{companyId})
+    </insert>
+
+    <delete id="delete">
+        DELETE FROM buildings b WHERE b.id = #{id}
+    </delete>
+
+    <resultMap id="BuildingResultMap" type="com.solvd.laba.domain.Building" autoMapping="false">
+        <id column="id" property="id"/>
+        <result column="building_description" property="buildingDescription"/>
+        <association property="buildingType" column="building_type" resultMap="com.solvd.laba.persistence.repositories.BuildingTypeRepository.BuildingTypeResultMap"/>
+        <collection property="employees"
+                    resultMap="com.solvd.laba.persistence.repositories.EmployeeRepository.EmployeeResultMap"/>
+    </resultMap>
+</mapper>

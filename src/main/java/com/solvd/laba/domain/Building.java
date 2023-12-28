@@ -1,11 +1,12 @@
 package com.solvd.laba.domain;
 
-import com.solvd.laba.domain.BuildingType;
+import java.util.List;
 
 public class Building {
     private Long id;
     private BuildingType buildingType;
     private String buildingDescription;
+    private List<Employee> employees;
 
     public Long getId() {
         return id;
@@ -29,5 +30,13 @@ public class Building {
 
     public void setBuildingDescription(String buildingDescription) {
         this.buildingDescription = buildingDescription;
+    }
+
+    public List<Employee> getEmployees() {
+        return employees;
+    }
+
+    public void setEmployees(List<Employee> employees) {
+        this.employees = employees;
     }
 }

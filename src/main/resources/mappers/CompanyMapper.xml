@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.solvd.laba.persistence.repositories.CompanyRepository">
+    <insert id="create" keyColumn="id" keyProperty="id" useGeneratedKeys="true">
+        INSERT INTO companies(company_name) VALUES (#{name})
+    </insert>
+    
+    <sql id="companySelect">
+        SELECT
+            c.id as company_id, c.company_name,
+            e.id as employee_id, e.first_name, e.last_name, e.position as employee_position,
+            b.id as building_id, b.building_type, b.building_description
+        FROM companies c
+        LEFT JOIN employees e ON e.company_id = c.id
+        LEFT JOIN employee_buildings eb ON e.id = ep.employee_id
+        LEFT JOIN buildings b ON eb.building_id = b.id
+    </sql>
+    
+    <select id="findById" resultMap="CompanyResultMap">
+        <include refid="companySelect"/>
+        WHERE c.id = #{companyId}
+    </select>
+    
+    <update id="update">
+        UPDATE companies SET name = #{company.name} where id = #{companyId}
+    </update>
+
+    <delete id="delete">
+        DELETE FROM companies c WHERE c.id = #{companyId}
+    </delete>
+    
+    <resultMap id="CompanyResultMap" type="com.solvd.laba.domain.Company" autoMapping="false">
+        <id column="id" property="id"/>
+        <result column="company_name" property="name"/>
+        <collection property="employees" columnPrefix="employee_"
+                    resultMap="com.solvd.laba.persistence.repositories.EmployeeRepository.EmployeeResultMap"/>
+    </resultMap>
+</mapper>

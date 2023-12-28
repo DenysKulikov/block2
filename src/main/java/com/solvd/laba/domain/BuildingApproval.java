@@ -2,8 +2,8 @@ package com.solvd.laba.domain;
 
 public class BuildingApproval {
     private Long id;
-    private String time_needed;
-    private String approved_by;
+    private String timeNeeded;
+    private String approvedBy;
 
     public Long getId() {
         return id;
@@ -13,19 +13,19 @@ public class BuildingApproval {
         this.id = id;
     }
 
-    public String getTime_needed() {
-        return time_needed;
+    public String getTimeNeeded() {
+        return timeNeeded;
     }
 
-    public void setTime_needed(String time_needed) {
-        this.time_needed = time_needed;
+    public void setTimeNeeded(String timeNeeded) {
+        this.timeNeeded = timeNeeded;
     }
 
-    public String getApproved_by() {
-        return approved_by;
+    public String getApprovedBy() {
+        return approvedBy;
     }
 
-    public void setApproved_by(String approved_by) {
-        this.approved_by = approved_by;
+    public void setApprovedBy(String approvedBy) {
+        this.approvedBy = approvedBy;
     }
 }

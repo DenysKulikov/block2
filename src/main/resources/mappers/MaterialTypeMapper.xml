@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.solvd.laba.persistence.repositories.MaterialTypeRepository">
+    <insert id="create" keyColumn="id" keyProperty="id" useGeneratedKeys="true">
+        INSERT INTO material_types (material_type)
+        VALUES (#{type})
+    </insert>
+
+    <delete id="delete">
+        DELETE FROM material_types mt WHERE mt.material_type = #{type}
+    </delete>
+
+    <resultMap id="MaterialTypeResultMap" type="com.solvd.laba.domain.MaterialType" autoMapping="false">
+        <id column="id" property="id"/>
+        <result property="type" column="material_type"/>
+    </resultMap>
+</mapper>

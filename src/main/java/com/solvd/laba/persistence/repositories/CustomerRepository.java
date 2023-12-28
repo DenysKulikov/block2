@@ -1,13 +1,14 @@
 package com.solvd.laba.persistence.repositories;
 
 import com.solvd.laba.domain.Customer;
+import org.apache.ibatis.annotations.Param;
 
 import java.sql.SQLException;
 
 public interface CustomerRepository {
-    void create(Customer customer, Long paymentId) throws SQLException;
+    void create(@Param("customer") Customer customer, @Param("paymentId") Long paymentId) throws SQLException;
     void delete(Long customerId);
     Long getCustomerId(Customer customer) throws SQLException;
-    void addCustomerToCompany(Long customerId, Long companyId);
-    void deleteCustomerFromCompany(Long customerId, Long companyId);
+    void addCustomerToCompany(@Param("customerId") Long customerId, @Param("companyId") Long companyId);
+    void deleteCustomerFromCompany(@Param("customerId")Long customerId, @Param("companyId") Long companyId);
 }

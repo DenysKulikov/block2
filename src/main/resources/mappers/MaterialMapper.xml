@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.solvd.laba.persistence.repositories.MaterialRepository">
+    <insert id="create" keyColumn="id" keyProperty="id" useGeneratedKeys="true">
+        INSERT INTO materials (material_name, amount, price, material_type)
+        VALUES (#{name}, #{amount}, #{price}, #{materialType.type})
+    </insert>
+
+    <delete id="delete">
+        DELETE FROM materials m WHERE m.id = #{materialId}
+    </delete>
+
+    <insert id="addMaterialToBuilding">
+        INSERT INTO material_buildings (material_id, building_id)
+        VALUES (#{materialId}, #{buildingId})
+    </insert>
+
+    <delete id="deleteMaterialFromBuilding">
+        DELETE FROM material_buildings mb
+        WHERE mb.material_id = #{materialId} AND mb.building_id = #{buildingId}
+    </delete>
+
+    <resultMap id="MaterialResultMap" type="com.solvd.laba.domain.Material" autoMapping="false">
+        <id column="id" property="id"/>
+        <result column="material_name" property="name"/>
+        <result column="amount" property="amount"/>
+        <result column="price" property="price"/>
+        <association property="materialType" column="material_type"
+                     resultMap="com.solvd.laba.persistence.repositories.BuildingTypeRepository.BuildingTypeResultMap"/>
+    </resultMap>
+</mapper>
