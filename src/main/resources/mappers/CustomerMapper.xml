@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.solvd.laba.persistence.repositories.CustomerRepository">
+    <insert id="create" keyColumn="id" keyProperty="customer.id" useGeneratedKeys="true">
+        INSERT INTO customers(first_name, last_name, payment_id)
+        VALUES (#{customer.firstName}, #{customer.lastName}, #{paymentId})
+    </insert>
+
+    <delete id="delete">
+        DELETE FROM customers c WHERE c.id = #{customerId}
+    </delete>
+    
+    <insert id="addCustomerToCompany">
+        INSERT INTO customer_companies (customer_id, company_id)
+        VALUES (#{customerId}, #{companyId})
+    </insert>
+
+    <delete id="deleteCustomerFromCompany">
+        DELETE FROM customer_companies cc
+        WHERE cc.customer_id = #{customerId} AND cc.company_id = #{companyId}
+    </delete>
+
+    <resultMap id="CustomerResultMap" type="com.solvd.laba.domain.Customer" autoMapping="false">
+        <id column="id" property="id"/>
+        <result column="first_name" property="firstName"/>
+        <result column="last_name" property="lastName"/>
+    </resultMap>
+</mapper>

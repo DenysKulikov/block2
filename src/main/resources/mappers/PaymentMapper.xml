@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.solvd.laba.persistence.repositories.PaymentRepository">
+    <insert id="create" keyColumn="id" keyProperty="id" useGeneratedKeys="true">
+        INSERT INTO payments (amount, payment_date)
+        VALUES (#{amount}, #{paymentDate})
+    </insert>
+
+    <delete id="delete">
+        DELETE FROM payments p WHERE p.id = #{id}
+    </delete>
+
+    <resultMap id="PaymentResultMap" type="com.solvd.laba.domain.Payment" autoMapping="false">
+        <id column="id" property="id"/>
+        <result column="amount" property="amount"/>
+        <result column="payment_date" property="paymentDate"/>
+    </resultMap>
+</mapper>

@@ -1,10 +1,9 @@
 package com.solvd.laba;
 
 import com.solvd.laba.domain.*;
-import com.solvd.laba.domain.BuildingType;
-import com.solvd.laba.domain.MaterialType;
-import com.solvd.laba.domain.Position;
-import com.solvd.laba.persistence.impl.*;
+import com.solvd.laba.persistence.impl.MaterialRepositoryImpl;
+import com.solvd.laba.persistence.impl.MaterialTypeRepositoryImpl;
+import com.solvd.laba.persistence.mybatisImpl.*;
 import com.solvd.laba.persistence.repositories.*;
 import com.solvd.laba.service.*;
 import com.solvd.laba.service.impl.*;
@@ -12,10 +11,12 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import java.math.BigDecimal;
-import java.sql.*;
+import java.sql.Date;
+import java.sql.SQLException;
 
-public class Main {
-    private static final Logger LOGGER = LogManager.getLogger(Main.class);
+public class MyBatisMain {
+    private static final Logger LOGGER = LogManager.getLogger(MyBatisMain.class);
+
     public static void main(String[] args) throws SQLException {
         Company company = new Company();
         company.setName("Bud");
@@ -66,53 +67,53 @@ public class Main {
         material.setPrice(BigDecimal.valueOf(100000));
         material.setMaterialType(materialType);
 
-        CompanyRepository companyRepository = new CompanyRepositoryImpl();
-        CompanyService companyService = new CompanyServiceImpl(companyRepository);
-
-        SalaryRepository salaryRepository = new SalaryRepositoryImpl();
-        SalaryService salaryService = new SalaryServiceImpl(salaryRepository);
-
-        PositionRepository positionRepository = new PositionRepositoryImpl();
+        PositionRepository positionRepository = new PositionRepositoryMybatisImpl();
         PositionService positionService = new PositionServiceImpl(positionRepository);
         positionService.create(position);
 
-        EmployeeRepository employeeRepository = new EmployeeRepositoryImpl();
-        EmployeeServiceImpl employeeService = new EmployeeServiceImpl(employeeRepository);
+        CompanyRepository companyRepository = new CompanyRepositoryMybatisIpl();
+        CompanyService companyService = new CompanyServiceImpl(companyRepository);
         companyService.create(company);
+
+        SalaryRepository salaryRepository = new SalaryRepositoryMybatisImpl();
+        SalaryService salaryService = new SalaryServiceImpl(salaryRepository);
         salaryService.create(salary);
+
+        EmployeeRepository employeeRepository = new EmployeeRepositoryMybatisImpl();
+        EmployeeServiceImpl employeeService = new EmployeeServiceImpl(employeeRepository);
         employeeService.create(employee, company.getId(), salary.getId(), position.getPositionName());
 
-        PaymentRepository paymentRepository = new PaymentRepositoryImpl();
+        PaymentRepository paymentRepository = new PaymentRepositoryMybatisImpl();
         PaymentService paymentService = new PaymentServiceImpl(paymentRepository);
         paymentService.create(payment);
 
-        CustomerRepository customerRepository = new CustomerRepositoryImpl();
+        CustomerRepository customerRepository = new CustomerRepositoryMybatisImpl();
         CustomerService customerService = new CustomerServiceImpl(customerRepository);
         customerService.create(customer, payment.getId());
         customerService.addCustomerToCompany(customer.getId(), company.getId());
 
-        BuildingTypeRepository buildingTypeRepository = new BuildingTypeRepositoryImpl();
+        BuildingTypeRepository buildingTypeRepository = new BuildingTypeRepositoryMybatisImpl();
         BuildingTypeService buildingTypeService = new BuildingTypeServiceImpl(buildingTypeRepository);
         buildingTypeService.create(building.getBuildingType());
 
-        BuildingRepository buildingRepository = new BuildingRepositoryImpl();
+        BuildingRepository buildingRepository = new BuildingRepositoryMybatisImpl();
         BuildingService buildingService = new BuildingServiceImpl(buildingRepository);
         buildingService.create(building, company.getId());
         employeeService.addEmployeeToBuilding(employee.getId(), building.getId());
 
-        BuildingApprovalRepository buildingApprovalRepository = new BuildingApprovalRepositoryImpl();
+        BuildingApprovalRepository buildingApprovalRepository = new BuildingApprovalRepositoryMybatisImpl();
         BuildingApprovalService buildingApprovalService = new BuildingApprovalServiceImpl(buildingApprovalRepository);
         buildingApprovalService.create(buildingApproval, building.getId());
 
-        CostEstimateRepository costEstimateRepository = new CostEstimateRepositoryIml();
+        CostEstimateRepository costEstimateRepository = new CostEstimateRepositoryMybatisImpl();
         CostEstimateService costEstimateService = new CostEstimateServiceImpl(costEstimateRepository);
         costEstimateService.create(costEstimate, building.getId());
 
-        MaterialTypeRepository materialTypeRepository = new MaterialTypeRepositoryImpl();
+        MaterialTypeRepository materialTypeRepository = new MaterialTypeRepositoryMybatisImpl();
         MaterialTypeService materialTypeService = new MaterialTypeServiceImpl(materialTypeRepository);
         materialTypeService.crete(material.getMaterialType());
 
-        MaterialRepository materialRepository = new MaterialRepositoryImpl();
+        MaterialRepository materialRepository = new MaterialRepositoryMybatisImpl();
         MaterialService materialService = new MaterialServiceImpl(materialRepository);
         materialService.create(material);
         materialService.addMaterialToBuilding(material.getId(), building.getId());
@@ -139,10 +140,10 @@ public class Main {
         buildingApprovalRepository.delete(buildingApproval.getId());
         costEstimateRepository.delete(costEstimate.getId());
         buildingRepository.delete(building.getId());
-        buildingTypeRepository.delete(building.getBuildingType());
+        buildingTypeRepository.delete(buildingType);
 
-        companyRepository.delete(company.getId());
-        salaryRepository.delete(salary.getId());
-        positionRepository.delete(position);
+        companyService.delete(company.getId());
+        salaryService.delete(salary.getId());
+        positionService.delete(position);
     }
 }

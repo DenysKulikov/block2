@@ -13,7 +13,7 @@ public class MaterialTypeServiceImpl implements MaterialTypeService {
 
     @Override
     public void crete(MaterialType materialType) {
-        materialTypeRepository.crete(materialType);
+        materialTypeRepository.create(materialType);
     }
 
     @Override

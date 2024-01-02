@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.solvd.laba.persistence.repositories.EmployeeRepository">
+    <insert id="create" keyColumn="id" keyProperty="employee.id" useGeneratedKeys="true">
+        INSERT INTO employees(first_name, last_name, position, company_id, salary_id)
+        VALUES (#{employee.firstName}, #{employee.lastName}, #{positionName}, #{companyId}, #{salaryId})
+    </insert>
+
+    <delete id="delete">
+        DELETE FROM employees e WHERE e.id = #{id}
+    </delete>
+
+    <insert id="addEmployeeToBuilding">
+        INSERT INTO employee_buildings (employee_id, building_id)
+        VALUES (#{employeeId}, #{buildingId})
+    </insert>
+
+    <delete id="deleteEmployeeFromBuilding">
+        DELETE FROM employee_buildings eb
+        WHERE eb.employee_id = #{employeeId} AND eb.building_id = #{buildingId}
+    </delete>
+
+    <select id="findById" resultMap="EmployeeResultMap">
+        SELECT id, first_name, last_name from employees
+    </select>
+
+    <resultMap id="EmployeeResultMap" type="com.solvd.laba.domain.Employee" autoMapping="false">
+        <id column="id" property="id"/>
+        <result column="first_name" property="firstName"/>
+        <result column="last_name" property="lastName"/>
+        <result column="position" property="position"/>
+    </resultMap>
+</mapper>

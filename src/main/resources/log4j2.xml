@@ -9,8 +9,16 @@
             <PatternLayout pattern="%d{HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n"/>
         </File>
 
+        <File name="FileForMybatisMain" fileName="mybatis-log-file.log">
+            <PatternLayout pattern="%d{HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n"/>
+        </File>
     </Appenders>
     <Loggers>
+        <Logger name="com.solvd.laba.MyBatisMain" level="trace" additivity="false">
+            <AppenderRef ref="Console"/>
+            <AppenderRef ref="FileForMybatisMain"/>
+        </Logger>
+
         <Logger name="com.solvd.laba.Main" level="trace" additivity="false">
             <AppenderRef ref="Console"/>
             <AppenderRef ref="File"/>

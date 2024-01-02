@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.solvd.laba.persistence.repositories.BuildingApprovalRepository">
+    <insert id="create" keyColumn="id" keyProperty="buildingApproval.id" useGeneratedKeys="true">
+        INSERT INTO building_approvals (time_needed, approved_by, building_id)
+        VALUES (#{buildingApproval.timeNeeded}, #{buildingApproval.approvedBy}, #{buildingId})
+    </insert>
+
+    <delete id="delete">
+        DELETE FROM building_approvals ba WHERE ba.id = #{buildingApprovalId}
+    </delete>
+
+    <select id="findById">
+        SELECT ba.id, ba.time_needed, ba.approved_by FROM building_approvals ba WHERE ba.id = #{buildingApprovalId}
+    </select>
+
+    <resultMap id="BuildingApprovalResultMap" type="com.solvd.laba.domain.BuildingApproval" autoMapping="false">
+        <id column="id" property="id"/>
+        <result column="time_needed" property="timeNeeded"/>
+        <result column="approved_by" property="approvedBy"/>
+    </resultMap>
+</mapper>
