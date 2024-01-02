@@ -69,3 +69,39 @@
 16:29:45.891 [main] TRACE com.solvd.laba.Main - Building Approval id: 14
 16:29:45.891 [main] TRACE com.solvd.laba.Main - CostEstimate (for building) id: 12
 16:29:45.891 [main] TRACE com.solvd.laba.Main - Material Approval id: 15
+14:10:09.759 [main] TRACE com.solvd.laba.Main - Company id: 172
+14:10:09.770 [main] TRACE com.solvd.laba.Main - Salary id: 98
+14:10:09.771 [main] TRACE com.solvd.laba.Main - Employee id: 69
+14:10:09.771 [main] TRACE com.solvd.laba.Main - Payment id: 48
+14:10:09.771 [main] TRACE com.solvd.laba.Main - Customer id: 42
+14:10:09.771 [main] TRACE com.solvd.laba.Main - Building id: 29
+14:10:09.771 [main] TRACE com.solvd.laba.Main - Building Approval id: 23
+14:10:09.771 [main] TRACE com.solvd.laba.Main - CostEstimate (for building) id: 21
+14:10:09.771 [main] TRACE com.solvd.laba.Main - Material id: 19
+14:11:12.880 [main] TRACE com.solvd.laba.Main - Company id: 173
+14:11:12.885 [main] TRACE com.solvd.laba.Main - Salary id: 99
+14:11:12.886 [main] TRACE com.solvd.laba.Main - Employee id: 70
+14:11:12.886 [main] TRACE com.solvd.laba.Main - Payment id: 49
+14:11:12.886 [main] TRACE com.solvd.laba.Main - Customer id: 43
+14:11:12.886 [main] TRACE com.solvd.laba.Main - Building id: 30
+14:11:12.886 [main] TRACE com.solvd.laba.Main - Building Approval id: 24
+14:11:12.886 [main] TRACE com.solvd.laba.Main - CostEstimate (for building) id: 22
+14:11:12.886 [main] TRACE com.solvd.laba.Main - Material id: 20
+14:12:03.077 [main] TRACE com.solvd.laba.Main - Company id: 174
+14:12:03.079 [main] TRACE com.solvd.laba.Main - Salary id: 100
+14:12:03.079 [main] TRACE com.solvd.laba.Main - Employee id: 71
+14:12:03.079 [main] TRACE com.solvd.laba.Main - Payment id: 50
+14:12:03.079 [main] TRACE com.solvd.laba.Main - Customer id: 44
+14:12:03.079 [main] TRACE com.solvd.laba.Main - Building id: 31
+14:12:03.079 [main] TRACE com.solvd.laba.Main - Building Approval id: 25
+14:12:03.079 [main] TRACE com.solvd.laba.Main - CostEstimate (for building) id: 23
+14:12:03.079 [main] TRACE com.solvd.laba.Main - Material id: 21
+14:12:49.304 [main] TRACE com.solvd.laba.Main - Company id: 175
+14:12:49.306 [main] TRACE com.solvd.laba.Main - Salary id: 101
+14:12:49.306 [main] TRACE com.solvd.laba.Main - Employee id: 72
+14:12:49.306 [main] TRACE com.solvd.laba.Main - Payment id: 51
+14:12:49.306 [main] TRACE com.solvd.laba.Main - Customer id: 45
+14:12:49.306 [main] TRACE com.solvd.laba.Main - Building id: 32
+14:12:49.306 [main] TRACE com.solvd.laba.Main - Building Approval id: 26
+14:12:49.306 [main] TRACE com.solvd.laba.Main - CostEstimate (for building) id: 24
+14:12:49.306 [main] TRACE com.solvd.laba.Main - Material id: 22

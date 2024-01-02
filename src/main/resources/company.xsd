@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    <xs:complexType name="BuildingEnumType">
+        <xs:all>
+            <xs:element name="type" type="xs:string"/>
+            <xs:element name="baseCost" type="xs:decimal"/>
+        </xs:all>
+    </xs:complexType>
+
+    <xs:complexType name="CostEstimateType">
+        <xs:all>
+            <xs:element name="cost" type="xs:decimal"/>
+        </xs:all>
+    </xs:complexType>
+
+    <xs:complexType name="BuildingType">
+        <xs:all>
+            <xs:element name="buildingType" type="BuildingEnumType"/>
+            <xs:element name="buildingDescription" type="xs:string"/>
+            <xs:element name="costEstimateType" type="CostEstimateType"/>
+        </xs:all>
+        <xs:attribute name="id" type="xs:long" use="required"/>
+    </xs:complexType>
+    
+    <xs:complexType name="BuildingsType">
+        <xs:sequence>
+            <xs:element name="building" type="BuildingType" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="EmployeeType">
+        <xs:all>
+            <xs:element name="buildings" type="BuildingsType"/>
+            <xs:element name="firstName" type="xs:string"/>
+            <xs:element name="lastName" type="xs:string"/>
+            <xs:element name="position" type="xs:string"/>
+        </xs:all>
+        <xs:attribute name="id" type="xs:long" use="required"/>
+    </xs:complexType>
+
+    <xs:complexType name="Employees">
+        <xs:sequence>
+            <xs:element name="employee" type="EmployeeType" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="companyType">
+        <xs:all>
+            <xs:element name="employees" type="Employees"/>
+            <xs:element name="name" type="xs:string"/>
+        </xs:all>
+    </xs:complexType>
+
+    <xs:element name="company" type="companyType"/>
+</xs:schema>

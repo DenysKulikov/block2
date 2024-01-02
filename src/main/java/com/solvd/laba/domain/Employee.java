@@ -1,6 +1,8 @@
 package com.solvd.laba.domain;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class Employee {
     private Long id;
@@ -8,7 +10,8 @@ public class Employee {
     private String lastName;
     private String position;
     private boolean hasCar;
-    private List<Building> buildings;
+    private List<Building> buildings = new ArrayList<>();;
+    private Salary salary;
 
     public Long getId() {
         return id;
@@ -56,5 +59,41 @@ public class Employee {
 
     public void setBuildings(List<Building> buildings) {
         this.buildings = buildings;
+    }
+    public void addBuilding(Building building) {
+        buildings.add(building);
+    }
+
+    public Salary getSalary() {
+        return salary;
+    }
+
+    public void setSalary(Salary salary) {
+        this.salary = salary;
+    }
+
+    @Override
+    public String toString() {
+        return "Employee{" +
+                "id=" + id +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", position='" + position + '\'' +
+                ", hasCar=" + hasCar +
+                ", buildings=" + buildings +
+                '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Employee employee = (Employee) o;
+        return hasCar == employee.hasCar && Objects.equals(id, employee.id) && Objects.equals(firstName, employee.firstName) && Objects.equals(lastName, employee.lastName) && Objects.equals(position, employee.position) && Objects.equals(buildings, employee.buildings);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, firstName, lastName, position, hasCar, buildings);
     }
 }
