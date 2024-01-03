@@ -1,15 +1,22 @@
 package com.solvd.laba.domain;
 
+import jakarta.xml.bind.annotation.*;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
+@XmlAccessorType(XmlAccessType.FIELD)
 public class Employee {
+    @XmlAttribute(name = "id")
     private Long id;
     private String firstName;
     private String lastName;
     private String position;
+    @XmlTransient
     private boolean hasCar;
+    @XmlElementWrapper(name = "buildings")
+    @XmlElement(name = "building")
     private List<Building> buildings = new ArrayList<>();;
     private Salary salary;
 

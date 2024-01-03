@@ -28,6 +28,7 @@ public class DOMParserImpl {
 
             Company company = parseCompany(companyElement);
 
+            System.out.println("Company id: " + company.getId());
             System.out.println("Company Name: " + company.getName());
 
             for (Employee employee : company.getEmployees()) {
@@ -55,6 +56,7 @@ public class DOMParserImpl {
 
     private static Company parseCompany(Element companyElement) {
         Company company = new Company();
+        company.setId(Long.parseLong(companyElement.getAttribute("id")));
         company.setName(getTextContent(companyElement, "name"));
 
         NodeList employeeList = companyElement.getElementsByTagName("employee");
@@ -97,7 +99,7 @@ public class DOMParserImpl {
         building.setBuildingDescription(getTextContent(buildingElement, "buildingDescription"));
 
         CostEstimate costEstimate = new CostEstimate();
-        Element costEstimateElement = (Element) buildingElement.getElementsByTagName("costEstimateType").item(0);
+        Element costEstimateElement = (Element) buildingElement.getElementsByTagName("costEstimate").item(0);
         costEstimate.setCost(new BigDecimal(getTextContent(costEstimateElement, "cost")));
         building.setCostEstimate(costEstimate);
 

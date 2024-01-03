@@ -18,7 +18,7 @@
         <xs:all>
             <xs:element name="buildingType" type="BuildingEnumType"/>
             <xs:element name="buildingDescription" type="xs:string"/>
-            <xs:element name="costEstimateType" type="CostEstimateType"/>
+            <xs:element name="costEstimate" type="CostEstimateType"/>
         </xs:all>
         <xs:attribute name="id" type="xs:long" use="required"/>
     </xs:complexType>
@@ -50,6 +50,7 @@
             <xs:element name="employees" type="Employees"/>
             <xs:element name="name" type="xs:string"/>
         </xs:all>
+        <xs:attribute name="id" type="xs:long" use="required"/>
     </xs:complexType>
 
     <xs:element name="company" type="companyType"/>

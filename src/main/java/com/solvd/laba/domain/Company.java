@@ -1,12 +1,19 @@
 package com.solvd.laba.domain;
 
+import jakarta.xml.bind.annotation.*;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
+@XmlRootElement(name = "company")
+@XmlAccessorType(XmlAccessType.FIELD)
 public class Company {
+    @XmlAttribute(name = "id")
     private Long id;
     private String name;
+    @XmlElementWrapper(name = "employees")
+    @XmlElement(name = "employee")
     private List<Employee> employees = new ArrayList<>();
 
     public Long getId() {

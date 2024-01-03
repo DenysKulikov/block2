@@ -1,14 +1,18 @@
 package com.solvd.laba.domain;
 
-import java.util.ArrayList;
-import java.util.List;
+import jakarta.xml.bind.annotation.XmlAccessType;
+import jakarta.xml.bind.annotation.XmlAccessorType;
+import jakarta.xml.bind.annotation.XmlAttribute;
+
 import java.util.Objects;
 
+@XmlAccessorType(XmlAccessType.FIELD)
 public class Building {
+    @XmlAttribute(name = "id")
     private Long id;
+
     private BuildingType buildingType;
     private String buildingDescription;
-    private List<Employee> employees = new ArrayList<>();
     private CostEstimate costEstimate;
 
     public Long getId() {
@@ -35,18 +39,6 @@ public class Building {
         this.buildingDescription = buildingDescription;
     }
 
-    public List<Employee> getEmployees() {
-        return employees;
-    }
-
-    public void setEmployees(List<Employee> employees) {
-        this.employees = employees;
-    }
-
-    public void addEmployee(Employee employee) {
-        employees.add(employee);
-    }
-
     public CostEstimate getCostEstimate() {
         return costEstimate;
     }
@@ -61,7 +53,7 @@ public class Building {
                 "id=" + id +
                 ", buildingType=" + buildingType +
                 ", buildingDescription='" + buildingDescription + '\'' +
-                ", employees=" + employees +
+                ", costEstimate=" + costEstimate +
                 '}';
     }
 
@@ -70,11 +62,13 @@ public class Building {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Building building = (Building) o;
-        return Objects.equals(id, building.id) && Objects.equals(buildingType, building.buildingType) && Objects.equals(buildingDescription, building.buildingDescription) && Objects.equals(employees, building.employees);
+        return Objects.equals(id, building.id) && Objects.equals(buildingType, building.buildingType)
+                && Objects.equals(buildingDescription, building.buildingDescription)
+                && Objects.equals(costEstimate, building.costEstimate);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, buildingType, buildingDescription, employees);
+        return Objects.hash(id, buildingType, buildingDescription, costEstimate);
     }
 }

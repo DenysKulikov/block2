@@ -1,5 +1,5 @@
 <company xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:noNamespaceSchemaLocation="company.xsd">
+         xsi:noNamespaceSchemaLocation="company.xsd" id="1">
     <name>Building</name>
     <employees>
         <employee id="1">
@@ -13,9 +13,9 @@
                         <baseCost>180000.00</baseCost>
                     </buildingType>
                     <buildingDescription>Desc 1</buildingDescription>
-                    <costEstimateType>
+                    <costEstimate>
                         <cost>1000000.00</cost>
-                    </costEstimateType>
+                    </costEstimate>
                 </building>
 
                 <building id="2">
@@ -24,9 +24,9 @@
                         <baseCost>180000.00</baseCost>
                     </buildingType>
                     <buildingDescription>Desc 2</buildingDescription>
-                    <costEstimateType>
+                    <costEstimate>
                         <cost>1000000.00</cost>
-                    </costEstimateType>
+                    </costEstimate>
                 </building>
             </buildings>
         </employee>
@@ -42,9 +42,9 @@
                         <baseCost>120000.00</baseCost>
                     </buildingType>
                     <buildingDescription>Desc 1</buildingDescription>
-                    <costEstimateType>
+                    <costEstimate>
                         <cost>1000000.00</cost>
-                    </costEstimateType>
+                    </costEstimate>
                 </building>
             </buildings>
         </employee>
