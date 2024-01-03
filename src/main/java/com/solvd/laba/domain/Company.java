@@ -1,5 +1,6 @@
 package com.solvd.laba.domain;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.xml.bind.annotation.*;
 
 import java.util.ArrayList;
@@ -11,6 +12,7 @@ import java.util.Objects;
 public class Company {
     @XmlAttribute(name = "id")
     private Long id;
+    @JsonProperty("name")
     private String name;
     @XmlElementWrapper(name = "employees")
     @XmlElement(name = "employee")

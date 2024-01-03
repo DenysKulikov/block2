@@ -1,5 +1,6 @@
 package com.solvd.laba.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.xml.bind.annotation.*;
 
 import java.util.ArrayList;
@@ -13,6 +14,7 @@ public class Employee {
     private String firstName;
     private String lastName;
     private String position;
+    @JsonIgnore
     @XmlTransient
     private boolean hasCar;
     @XmlElementWrapper(name = "buildings")

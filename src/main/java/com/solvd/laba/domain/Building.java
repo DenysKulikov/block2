@@ -10,7 +10,6 @@ import java.util.Objects;
 public class Building {
     @XmlAttribute(name = "id")
     private Long id;
-
     private BuildingType buildingType;
     private String buildingDescription;
     private CostEstimate costEstimate;
