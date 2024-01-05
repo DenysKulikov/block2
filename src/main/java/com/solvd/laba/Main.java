@@ -13,6 +13,8 @@ import org.apache.logging.log4j.Logger;
 
 import java.math.BigDecimal;
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Main {
     private static final Logger LOGGER = LogManager.getLogger(Main.class);
@@ -126,6 +128,9 @@ public class Main {
         LOGGER.trace("Building Approval id: " + buildingApproval.getId());
         LOGGER.trace("CostEstimate (for building) id: " + costEstimate.getId());
         LOGGER.trace("Material id: " + material.getId());
+
+        List<Company> companies = new ArrayList<>(companyService.retrieveAll());
+        System.out.println(companies);
 
         employeeRepository.deleteEmployeeFromBuilding(employee.getId(), building.getId());
         employeeRepository.delete(employee.getId());

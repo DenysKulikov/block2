@@ -3,7 +3,6 @@ package com.solvd.laba.service.impl;
 
 import com.solvd.laba.domain.Employee;
 
-import com.solvd.laba.domain.Position;
 import com.solvd.laba.persistence.repositories.EmployeeRepository;
 import com.solvd.laba.service.EmployeeService;
 

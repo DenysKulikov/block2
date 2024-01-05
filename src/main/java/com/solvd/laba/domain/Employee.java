@@ -1,14 +1,26 @@
 package com.solvd.laba.domain;
 
-import java.util.List;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import jakarta.xml.bind.annotation.*;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Objects;
+
+@XmlAccessorType(XmlAccessType.FIELD)
 public class Employee {
+    @XmlAttribute(name = "id")
     private Long id;
     private String firstName;
     private String lastName;
     private String position;
+    @JsonIgnore
+    @XmlTransient
     private boolean hasCar;
-    private List<Building> buildings;
+    @XmlElementWrapper(name = "buildings")
+    @XmlElement(name = "building")
+    private List<Building> buildings = new ArrayList<>();;
+    private Salary salary;
 
     public Long getId() {
         return id;
@@ -56,5 +68,41 @@ public class Employee {
 
     public void setBuildings(List<Building> buildings) {
         this.buildings = buildings;
+    }
+    public void addBuilding(Building building) {
+        buildings.add(building);
+    }
+
+    public Salary getSalary() {
+        return salary;
+    }
+
+    public void setSalary(Salary salary) {
+        this.salary = salary;
+    }
+
+    @Override
+    public String toString() {
+        return "Employee{" +
+                "id=" + id +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", position='" + position + '\'' +
+                ", hasCar=" + hasCar +
+                ", buildings=" + buildings +
+                '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Employee employee = (Employee) o;
+        return hasCar == employee.hasCar && Objects.equals(id, employee.id) && Objects.equals(firstName, employee.firstName) && Objects.equals(lastName, employee.lastName) && Objects.equals(position, employee.position) && Objects.equals(buildings, employee.buildings);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, firstName, lastName, position, hasCar, buildings);
     }
 }

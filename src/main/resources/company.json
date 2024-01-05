@@ -1,0 +1,55 @@
+{
+  "id": 1,
+  "name": "Building",
+  "employees": [
+    {
+      "id": 1,
+      "firstName": "Alice",
+      "lastName": "Johnson",
+      "position": "BUILDER",
+      "buildings": [
+        {
+          "id": 1,
+          "buildingType": {
+            "type": "COMMERCIAL",
+            "baseCost": 180000.00
+          },
+          "buildingDescription": "Desc 1",
+          "costEstimate": {
+            "cost": 1000000.00
+          }
+        },
+        {
+          "id": 2,
+          "buildingType": {
+            "type": "COMMERCIAL",
+            "baseCost": 180000.00
+          },
+          "buildingDescription": "Desc 2",
+          "costEstimate": {
+            "cost": 1000000.00
+          }
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "firstName": "Sam",
+      "lastName": "Johnson",
+      "position": "BUILDER",
+      "buildings": [
+        {
+          "id": 3,
+          "buildingType": {
+            "type": "RESIDENTIAL",
+            "baseCost": 120000.00
+          },
+          "buildingDescription": "Desc 1",
+          "costEstimate": {
+            "cost": 1000000.00
+          }
+        }
+      ]
+    }
+  ]
+}

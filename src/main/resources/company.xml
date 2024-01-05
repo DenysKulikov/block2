@@ -1,0 +1,52 @@
+<company xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="company.xsd" id="1">
+    <name>Building</name>
+    <employees>
+        <employee id="1">
+            <firstName>Alice</firstName>
+            <lastName>Johnson</lastName>
+            <position>BUILDER</position>
+            <buildings>
+                <building id="1">
+                    <buildingType>
+                        <type>COMMERCIAL</type>
+                        <baseCost>180000.00</baseCost>
+                    </buildingType>
+                    <buildingDescription>Desc 1</buildingDescription>
+                    <costEstimate>
+                        <cost>1000000.00</cost>
+                    </costEstimate>
+                </building>
+
+                <building id="2">
+                    <buildingType>
+                        <type>COMMERCIAL</type>
+                        <baseCost>180000.00</baseCost>
+                    </buildingType>
+                    <buildingDescription>Desc 2</buildingDescription>
+                    <costEstimate>
+                        <cost>1000000.00</cost>
+                    </costEstimate>
+                </building>
+            </buildings>
+        </employee>
+
+        <employee id="2">
+            <firstName>Sam</firstName>
+            <lastName>Johnson</lastName>
+            <position>BUILDER</position>
+            <buildings>
+                <building id="3">
+                    <buildingType>
+                        <type>RESIDENTIAL</type>
+                        <baseCost>120000.00</baseCost>
+                    </buildingType>
+                    <buildingDescription>Desc 1</buildingDescription>
+                    <costEstimate>
+                        <cost>1000000.00</cost>
+                    </costEstimate>
+                </building>
+            </buildings>
+        </employee>
+    </employees>
+</company>

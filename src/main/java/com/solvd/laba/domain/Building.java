@@ -1,12 +1,18 @@
 package com.solvd.laba.domain;
 
-import java.util.List;
+import jakarta.xml.bind.annotation.XmlAccessType;
+import jakarta.xml.bind.annotation.XmlAccessorType;
+import jakarta.xml.bind.annotation.XmlAttribute;
 
+import java.util.Objects;
+
+@XmlAccessorType(XmlAccessType.FIELD)
 public class Building {
+    @XmlAttribute(name = "id")
     private Long id;
     private BuildingType buildingType;
     private String buildingDescription;
-    private List<Employee> employees;
+    private CostEstimate costEstimate;
 
     public Long getId() {
         return id;
@@ -32,11 +38,36 @@ public class Building {
         this.buildingDescription = buildingDescription;
     }
 
-    public List<Employee> getEmployees() {
-        return employees;
+    public CostEstimate getCostEstimate() {
+        return costEstimate;
     }
 
-    public void setEmployees(List<Employee> employees) {
-        this.employees = employees;
+    public void setCostEstimate(CostEstimate costEstimate) {
+        this.costEstimate = costEstimate;
+    }
+
+    @Override
+    public String toString() {
+        return "Building{" +
+                "id=" + id +
+                ", buildingType=" + buildingType +
+                ", buildingDescription='" + buildingDescription + '\'' +
+                ", costEstimate=" + costEstimate +
+                '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Building building = (Building) o;
+        return Objects.equals(id, building.id) && Objects.equals(buildingType, building.buildingType)
+                && Objects.equals(buildingDescription, building.buildingDescription)
+                && Objects.equals(costEstimate, building.costEstimate);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, buildingType, buildingDescription, costEstimate);
     }
 }

@@ -1,7 +1,13 @@
 package com.solvd.laba.domain;
 
+import jakarta.xml.bind.annotation.XmlAccessType;
+import jakarta.xml.bind.annotation.XmlAccessorType;
+import jakarta.xml.bind.annotation.XmlRootElement;
+
 import java.math.BigDecimal;
 
+@XmlRootElement
+@XmlAccessorType(XmlAccessType.FIELD)
 public class BuildingType {
     private Long id;
     private String type;
@@ -30,5 +36,14 @@ public class BuildingType {
 
     public void setBaseCost(BigDecimal baseCost) {
         this.baseCost = baseCost;
+    }
+
+    @Override
+    public String toString() {
+        return "BuildingType{" +
+                "id=" + id +
+                ", type='" + type + '\'' +
+                ", baseCost=" + baseCost +
+                '}';
     }
 }
