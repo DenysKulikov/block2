@@ -130,7 +130,7 @@ public class Main {
         LOGGER.trace("Material id: " + material.getId());
 
         List<Company> companies = new ArrayList<>(companyService.retrieveAll());
-        System.out.println(companies);
+        LOGGER.trace(companies);
 
         employeeRepository.deleteEmployeeFromBuilding(employee.getId(), building.getId());
         employeeRepository.delete(employee.getId());

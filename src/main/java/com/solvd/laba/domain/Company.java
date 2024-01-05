@@ -17,6 +17,9 @@ public class Company {
     @XmlElementWrapper(name = "employees")
     @XmlElement(name = "employee")
     private List<Employee> employees = new ArrayList<>();
+    @XmlElementWrapper(name = "customers")
+    @XmlElement(name = "customer")
+    private List<Customer> customers = new ArrayList<>();
 
     public Long getId() {
         return id;
@@ -46,12 +49,25 @@ public class Company {
         employees.add(employee);
     }
 
+    public void addCustomer(Customer customer) {
+        customers.add(customer);
+    }
+
+    public List<Customer> getCustomers() {
+        return customers;
+    }
+
+    public void setCustomers(List<Customer> customers) {
+        this.customers = customers;
+    }
+
     @Override
     public String toString() {
         return "Company{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", employees=" + employees +
+                ", customers=" + customers +
                 '}';
     }
 
@@ -60,11 +76,11 @@ public class Company {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Company company = (Company) o;
-        return Objects.equals(id, company.id) && Objects.equals(name, company.name) && Objects.equals(employees, company.employees);
+        return Objects.equals(id, company.id) && Objects.equals(name, company.name) && Objects.equals(employees, company.employees) && Objects.equals(customers, company.customers);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, name, employees);
+        return Objects.hash(id, name, employees, customers);
     }
 }

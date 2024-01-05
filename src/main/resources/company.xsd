@@ -45,10 +45,34 @@
         </xs:sequence>
     </xs:complexType>
 
+    <xs:complexType name="Payment">
+        <xs:sequence>
+            <xs:element name="amount" type="xs:decimal"/>
+            <xs:element name="paymentDate" type="xs:date"/>
+        </xs:sequence>
+        <xs:attribute name="id" type="xs:long" use="required"/>
+    </xs:complexType>
+
+    <xs:complexType name="CustomerType">
+        <xs:sequence>
+            <xs:element name="firstName" type="xs:string"/>
+            <xs:element name="lastName" type="xs:string"/>
+            <xs:element name="payment" type="Payment"/>
+        </xs:sequence>
+        <xs:attribute name="id" type="xs:long" use="required"/>
+    </xs:complexType>
+
+    <xs:complexType name="Customers">
+        <xs:sequence>
+            <xs:element name="customer" type="CustomerType" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+
     <xs:complexType name="companyType">
         <xs:all>
             <xs:element name="employees" type="Employees"/>
             <xs:element name="name" type="xs:string"/>
+            <xs:element name="customers" type="Customers"/>
         </xs:all>
         <xs:attribute name="id" type="xs:long" use="required"/>
     </xs:complexType>
