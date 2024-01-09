@@ -49,4 +49,15 @@
             </buildings>
         </employee>
     </employees>
+    
+    <customers>
+        <customer id="1">
+            <firstName>John</firstName>
+            <lastName>Doe</lastName>
+            <payment id="1">
+                <amount>100000.00</amount>
+                <paymentDate>2023-01-15</paymentDate>
+            </payment>
+        </customer>
+    </customers>
 </company>
