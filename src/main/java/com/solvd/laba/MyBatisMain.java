@@ -89,7 +89,7 @@ public class MyBatisMain {
 
         CustomerRepository customerRepository = new CustomerRepositoryMybatisImpl();
         CustomerService customerService = new CustomerServiceImpl(customerRepository);
-        customerService.create(customer, payment.getId());
+        customerService.create(customer, payment.getPaymentId());
         customerService.addCustomerToCompany(customer.getId(), company.getId());
 
         BuildingTypeRepository buildingTypeRepository = new BuildingTypeRepositoryMybatisImpl();
@@ -121,7 +121,7 @@ public class MyBatisMain {
         LOGGER.trace("Company id: " + company.getId());
         LOGGER.trace("Salary id: " + salary.getId());
         LOGGER.trace("Employee id: " + employee.getId());
-        LOGGER.trace("Payment id: " + payment.getId());
+        LOGGER.trace("Payment id: " + payment.getPaymentId());
         LOGGER.trace("Customer id: " + customer.getId());
         LOGGER.trace("Building id: " + building.getId());
         LOGGER.trace("Building Approval id: " + buildingApproval.getId());
@@ -132,7 +132,7 @@ public class MyBatisMain {
         employeeRepository.delete(employee.getId());
         customerRepository.deleteCustomerFromCompany(customer.getId(), company.getId());
         customerRepository.delete(customer.getId());
-        paymentRepository.delete(payment.getId());
+        paymentRepository.delete(payment.getPaymentId());
 
         materialRepository.deleteMaterialFromBuilding(material.getId(), building.getId());
         materialRepository.delete(material.getId());

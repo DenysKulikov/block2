@@ -22,7 +22,7 @@ public class PaymentRepositoryImpl implements PaymentRepository {
 
             ResultSet resultSet = preparedStatement.getGeneratedKeys();
             while (resultSet.next()) {
-                payment.setId(resultSet.getLong(1));
+                payment.setPaymentId(resultSet.getLong(1));
             }
         } catch (SQLException e) {
             throw new RuntimeException(e);
@@ -53,11 +53,11 @@ public class PaymentRepositoryImpl implements PaymentRepository {
         connection.setReadOnly(true);
 
         try (PreparedStatement preparedStatement = connection.prepareStatement(select)) {
-            preparedStatement.setLong(1, payment.getId());
+            preparedStatement.setLong(1, payment.getPaymentId());
 
             ResultSet resultSet = preparedStatement.executeQuery();
             if (resultSet.next()) {
-                payment.setId(resultSet.getLong("id"));
+                payment.setPaymentId(resultSet.getLong("id"));
                 return resultSet.getLong("id");
             } else {
                 throw new RuntimeException("Payment record not found for the provided info.");

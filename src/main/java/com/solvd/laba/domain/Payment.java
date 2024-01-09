@@ -1,29 +1,39 @@
 package com.solvd.laba.domain;
 
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.solvd.laba.parsers.MyAdapter;
-import com.solvd.laba.parsers.SecondAdapter;
+import jakarta.xml.bind.annotation.XmlAccessType;
+import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
 import jakarta.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
 import java.math.BigDecimal;
 import java.sql.Date;
-import java.util.Objects;
 
+@XmlAccessorType(XmlAccessType.FIELD)
 public class Payment {
     @XmlAttribute(name = "id")
-    private Long id;
+    @JsonProperty("id")
+    private Long paymentId;
     private BigDecimal amount;
     /*@JsonDeserialize(using = SecondAdapter.class)
     @XmlJavaTypeAdapter(MyAdapter.class)*/
+    @XmlJavaTypeAdapter(MyAdapter.class)
     private Date paymentDate;
 
-    public Long getId() {
-        return id;
+    public Payment() {
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public Payment(Date paymentDate) {
+        this.paymentDate = paymentDate;
+    }
+
+    public Long getPaymentId() {
+        return paymentId;
+    }
+
+    public void setPaymentId(Long paymentId) {
+        this.paymentId = paymentId;
     }
 
     public BigDecimal getAmount() {
@@ -45,22 +55,9 @@ public class Payment {
     @Override
     public String toString() {
         return "Payment{" +
-                "id=" + id +
+                "paymentId=" + paymentId +
                 ", amount=" + amount +
                 ", paymentDate=" + paymentDate +
                 '}';
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Payment payment = (Payment) o;
-        return Objects.equals(id, payment.id) && Objects.equals(amount, payment.amount) && Objects.equals(paymentDate, payment.paymentDate);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(id, amount, paymentDate);
     }
 }
