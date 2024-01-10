@@ -90,7 +90,7 @@ public class Main {
 
         CustomerRepository customerRepository = new CustomerRepositoryImpl();
         CustomerService customerService = new CustomerServiceImpl(customerRepository);
-        customerService.create(customer, payment.getPaymentId());
+        customerService.create(customer, payment.getId());
         customerService.addCustomerToCompany(customer.getId(), company.getId());
 
         BuildingTypeRepository buildingTypeRepository = new BuildingTypeRepositoryImpl();
@@ -122,7 +122,7 @@ public class Main {
         LOGGER.trace("Company id: " + company.getId());
         LOGGER.trace("Salary id: " + salary.getId());
         LOGGER.trace("Employee id: " + employee.getId());
-        LOGGER.trace("Payment id: " + payment.getPaymentId());
+        LOGGER.trace("Payment id: " + payment.getId());
         LOGGER.trace("Customer id: " + customer.getId());
         LOGGER.trace("Building id: " + building.getId());
         LOGGER.trace("Building Approval id: " + buildingApproval.getId());
@@ -136,7 +136,7 @@ public class Main {
         employeeRepository.delete(employee.getId());
         customerRepository.deleteCustomerFromCompany(customer.getId(), company.getId());
         customerRepository.delete(customer.getId());
-        paymentRepository.delete(payment.getPaymentId());
+        paymentRepository.delete(payment.getId());
 
         materialRepository.deleteMaterialFromBuilding(material.getId(), building.getId());
         materialRepository.delete(material.getId());

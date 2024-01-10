@@ -14,10 +14,9 @@ import java.sql.Date;
 public class Payment {
     @XmlAttribute(name = "id")
     @JsonProperty("id")
-    private Long paymentId;
+    private Long id;
     private BigDecimal amount;
-    /*@JsonDeserialize(using = SecondAdapter.class)
-    @XmlJavaTypeAdapter(MyAdapter.class)*/
+    /*@JsonDeserialize(using = SecondAdapter.class)*/
     @XmlJavaTypeAdapter(MyAdapter.class)
     private Date paymentDate;
 
@@ -28,12 +27,12 @@ public class Payment {
         this.paymentDate = paymentDate;
     }
 
-    public Long getPaymentId() {
-        return paymentId;
+    public Long getId() {
+        return id;
     }
 
-    public void setPaymentId(Long paymentId) {
-        this.paymentId = paymentId;
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public BigDecimal getAmount() {
@@ -55,7 +54,7 @@ public class Payment {
     @Override
     public String toString() {
         return "Payment{" +
-                "paymentId=" + paymentId +
+                "id=" + id +
                 ", amount=" + amount +
                 ", paymentDate=" + paymentDate +
                 '}';

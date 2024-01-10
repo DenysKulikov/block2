@@ -104,7 +104,7 @@ public class DOMParserImpl {
 
     private static Payment parsePayment(Element paymentElement) {
         Payment payment = new Payment();
-        payment.setPaymentId(Long.parseLong(paymentElement.getAttribute("id")));
+        payment.setId(Long.parseLong(paymentElement.getAttribute("id")));
         payment.setAmount(new BigDecimal(getTextContent(paymentElement, "amount")));
         payment.setPaymentDate(Date.valueOf(getTextContent(paymentElement, "paymentDate")));
 
