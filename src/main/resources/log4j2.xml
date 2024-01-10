@@ -16,8 +16,35 @@
         <File name="FileForDOMParser" fileName="dom-parser-log-file.log">
             <PatternLayout pattern="%d{HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n"/>
         </File>
+
+        <File name="FileForDOMParser" fileName="dom-parser-log-file.log">
+            <PatternLayout pattern="%d{HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n"/>
+        </File>
+
+        <File name="FileForJsonParser" fileName="json-parser-log-file.log">
+            <PatternLayout pattern="%d{HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n"/>
+        </File>
+
+        <File name="FileForJAXBParser" fileName="jaxb-parser-log-file.log">
+            <PatternLayout pattern="%d{HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n"/>
+        </File>
     </Appenders>
     <Loggers>
+        <Logger name="com.solvd.laba.parsers.JAXBParser" level="trace" additivity="false">
+            <AppenderRef ref="Console"/>
+            <AppenderRef ref="FileForJAXBParser"/>
+        </Logger>
+
+        <Logger name="com.solvd.laba.parsers.JsonParser" level="trace" additivity="false">
+            <AppenderRef ref="Console"/>
+            <AppenderRef ref="FileForJsonParser"/>
+        </Logger>
+
+        <Logger name="com.solvd.laba.parsers.JsonParser" level="trace" additivity="false">
+            <AppenderRef ref="Console"/>
+            <AppenderRef ref="FileForJsonParser"/>
+        </Logger>
+
         <Logger name="com.solvd.laba.parsers.DOMParserImpl" level="trace" additivity="false">
             <AppenderRef ref="Console"/>
             <AppenderRef ref="FileForDOMParser"/>

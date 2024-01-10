@@ -46,10 +46,10 @@
     </xs:complexType>
 
     <xs:complexType name="Payment">
-        <xs:sequence>
+        <xs:all>
             <xs:element name="amount" type="xs:decimal"/>
             <xs:element name="paymentDate" type="xs:date"/>
-        </xs:sequence>
+        </xs:all>
         <xs:attribute name="id" type="xs:long" use="required"/>
     </xs:complexType>
 

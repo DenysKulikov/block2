@@ -29,3 +29,158 @@
 23:27:34.876 [main] TRACE com.solvd.laba.parsers.DOMParserImpl - Building Description: Desc 1
 23:27:34.876 [main] TRACE com.solvd.laba.parsers.DOMParserImpl - Cost Estimate: 1000000.00
 23:27:34.876 [main] TRACE com.solvd.laba.parsers.DOMParserImpl - ------------------------------------
+16:13:55.784 [main] TRACE com.solvd.laba.parsers.DOMParserImpl - Company id: 1
+16:13:55.794 [main] TRACE com.solvd.laba.parsers.DOMParserImpl - Company Name: Building
+16:13:55.794 [main] TRACE com.solvd.laba.parsers.DOMParserImpl - Customer ID: 1
+16:13:55.794 [main] TRACE com.solvd.laba.parsers.DOMParserImpl - First Name: John
+16:13:55.794 [main] TRACE com.solvd.laba.parsers.DOMParserImpl - Last Name: Doe
+16:13:55.795 [main] TRACE com.solvd.laba.parsers.DOMParserImpl - Payment{id=1, amount=100000.00, paymentDate=2023-01-15}
+16:13:55.796 [main] TRACE com.solvd.laba.parsers.DOMParserImpl - Employee ID: 1
+16:13:55.796 [main] TRACE com.solvd.laba.parsers.DOMParserImpl - First Name: Alice
+16:13:55.796 [main] TRACE com.solvd.laba.parsers.DOMParserImpl - Last Name: Johnson
+16:13:55.796 [main] TRACE com.solvd.laba.parsers.DOMParserImpl - Position: BUILDER
+16:13:55.796 [main] TRACE com.solvd.laba.parsers.DOMParserImpl - Building ID: 1
+16:13:55.796 [main] TRACE com.solvd.laba.parsers.DOMParserImpl - Building Type: COMMERCIAL
+16:13:55.796 [main] TRACE com.solvd.laba.parsers.DOMParserImpl - Base Cost: 180000.00
+16:13:55.796 [main] TRACE com.solvd.laba.parsers.DOMParserImpl - Building Description: Desc 1
+16:13:55.797 [main] TRACE com.solvd.laba.parsers.DOMParserImpl - Cost Estimate: 1000000.00
+16:13:55.797 [main] TRACE com.solvd.laba.parsers.DOMParserImpl - Building ID: 2
+16:13:55.797 [main] TRACE com.solvd.laba.parsers.DOMParserImpl - Building Type: COMMERCIAL
+16:13:55.797 [main] TRACE com.solvd.laba.parsers.DOMParserImpl - Base Cost: 180000.00
+16:13:55.797 [main] TRACE com.solvd.laba.parsers.DOMParserImpl - Building Description: Desc 2
+16:13:55.797 [main] TRACE com.solvd.laba.parsers.DOMParserImpl - Cost Estimate: 1000000.00
+16:13:55.797 [main] TRACE com.solvd.laba.parsers.DOMParserImpl - ------------------------------------
+16:13:55.797 [main] TRACE com.solvd.laba.parsers.DOMParserImpl - Employee ID: 2
+16:13:55.797 [main] TRACE com.solvd.laba.parsers.DOMParserImpl - First Name: Sam
+16:13:55.797 [main] TRACE com.solvd.laba.parsers.DOMParserImpl - Last Name: Johnson
+16:13:55.797 [main] TRACE com.solvd.laba.parsers.DOMParserImpl - Position: BUILDER
+16:13:55.797 [main] TRACE com.solvd.laba.parsers.DOMParserImpl - Building ID: 3
+16:13:55.798 [main] TRACE com.solvd.laba.parsers.DOMParserImpl - Building Type: RESIDENTIAL
+16:13:55.798 [main] TRACE com.solvd.laba.parsers.DOMParserImpl - Base Cost: 120000.00
+16:13:55.798 [main] TRACE com.solvd.laba.parsers.DOMParserImpl - Building Description: Desc 1
+16:13:55.798 [main] TRACE com.solvd.laba.parsers.DOMParserImpl - Cost Estimate: 1000000.00
+16:13:55.798 [main] TRACE com.solvd.laba.parsers.DOMParserImpl - ------------------------------------
+16:24:36.972 [main] TRACE com.solvd.laba.parsers.DOMParserImpl - Company id: 1
+16:24:36.974 [main] TRACE com.solvd.laba.parsers.DOMParserImpl - Company Name: Building
+16:24:36.974 [main] TRACE com.solvd.laba.parsers.DOMParserImpl - Customer ID: 1
+16:24:36.974 [main] TRACE com.solvd.laba.parsers.DOMParserImpl - First Name: John
+16:24:36.974 [main] TRACE com.solvd.laba.parsers.DOMParserImpl - Last Name: Doe
+16:24:36.975 [main] TRACE com.solvd.laba.parsers.DOMParserImpl - Payment{paymentId=1, amount=100000.00, paymentDate=2023-01-15}
+16:24:36.975 [main] TRACE com.solvd.laba.parsers.DOMParserImpl - Employee ID: 1
+16:24:36.976 [main] TRACE com.solvd.laba.parsers.DOMParserImpl - First Name: Alice
+16:24:36.976 [main] TRACE com.solvd.laba.parsers.DOMParserImpl - Last Name: Johnson
+16:24:36.976 [main] TRACE com.solvd.laba.parsers.DOMParserImpl - Position: BUILDER
+16:24:36.976 [main] TRACE com.solvd.laba.parsers.DOMParserImpl - Building ID: 1
+16:24:36.976 [main] TRACE com.solvd.laba.parsers.DOMParserImpl - Building Type: COMMERCIAL
+16:24:36.976 [main] TRACE com.solvd.laba.parsers.DOMParserImpl - Base Cost: 180000.00
+16:24:36.976 [main] TRACE com.solvd.laba.parsers.DOMParserImpl - Building Description: Desc 1
+16:24:36.976 [main] TRACE com.solvd.laba.parsers.DOMParserImpl - Cost Estimate: 1000000.00
+16:24:36.976 [main] TRACE com.solvd.laba.parsers.DOMParserImpl - Building ID: 2
+16:24:36.976 [main] TRACE com.solvd.laba.parsers.DOMParserImpl - Building Type: COMMERCIAL
+16:24:36.977 [main] TRACE com.solvd.laba.parsers.DOMParserImpl - Base Cost: 180000.00
+16:24:36.977 [main] TRACE com.solvd.laba.parsers.DOMParserImpl - Building Description: Desc 2
+16:24:36.977 [main] TRACE com.solvd.laba.parsers.DOMParserImpl - Cost Estimate: 1000000.00
+16:24:36.977 [main] TRACE com.solvd.laba.parsers.DOMParserImpl - ------------------------------------
+16:24:36.977 [main] TRACE com.solvd.laba.parsers.DOMParserImpl - Employee ID: 2
+16:24:36.977 [main] TRACE com.solvd.laba.parsers.DOMParserImpl - First Name: Sam
+16:24:36.977 [main] TRACE com.solvd.laba.parsers.DOMParserImpl - Last Name: Johnson
+16:24:36.977 [main] TRACE com.solvd.laba.parsers.DOMParserImpl - Position: BUILDER
+16:24:36.977 [main] TRACE com.solvd.laba.parsers.DOMParserImpl - Building ID: 3
+16:24:36.977 [main] TRACE com.solvd.laba.parsers.DOMParserImpl - Building Type: RESIDENTIAL
+16:24:36.977 [main] TRACE com.solvd.laba.parsers.DOMParserImpl - Base Cost: 120000.00
+16:24:36.977 [main] TRACE com.solvd.laba.parsers.DOMParserImpl - Building Description: Desc 1
+16:24:36.977 [main] TRACE com.solvd.laba.parsers.DOMParserImpl - Cost Estimate: 1000000.00
+16:24:36.978 [main] TRACE com.solvd.laba.parsers.DOMParserImpl - ------------------------------------
+16:43:12.448 [main] TRACE com.solvd.laba.parsers.DOMParserImpl - Company id: 1
+16:43:12.450 [main] TRACE com.solvd.laba.parsers.DOMParserImpl - Company Name: Building
+16:43:12.450 [main] TRACE com.solvd.laba.parsers.DOMParserImpl - Customer ID: 1
+16:43:12.450 [main] TRACE com.solvd.laba.parsers.DOMParserImpl - First Name: John
+16:43:12.450 [main] TRACE com.solvd.laba.parsers.DOMParserImpl - Last Name: Doe
+16:43:12.451 [main] TRACE com.solvd.laba.parsers.DOMParserImpl - Payment{paymentId=1, amount=100000.00, paymentDate=2023-01-15}
+16:43:12.451 [main] TRACE com.solvd.laba.parsers.DOMParserImpl - Employee ID: 1
+16:43:12.451 [main] TRACE com.solvd.laba.parsers.DOMParserImpl - First Name: Alice
+16:43:12.451 [main] TRACE com.solvd.laba.parsers.DOMParserImpl - Last Name: Johnson
+16:43:12.452 [main] TRACE com.solvd.laba.parsers.DOMParserImpl - Position: BUILDER
+16:43:12.452 [main] TRACE com.solvd.laba.parsers.DOMParserImpl - Building ID: 1
+16:43:12.452 [main] TRACE com.solvd.laba.parsers.DOMParserImpl - Building Type: COMMERCIAL
+16:43:12.452 [main] TRACE com.solvd.laba.parsers.DOMParserImpl - Base Cost: 180000.00
+16:43:12.452 [main] TRACE com.solvd.laba.parsers.DOMParserImpl - Building Description: Desc 1
+16:43:12.452 [main] TRACE com.solvd.laba.parsers.DOMParserImpl - Cost Estimate: 1000000.00
+16:43:12.452 [main] TRACE com.solvd.laba.parsers.DOMParserImpl - Building ID: 2
+16:43:12.452 [main] TRACE com.solvd.laba.parsers.DOMParserImpl - Building Type: COMMERCIAL
+16:43:12.452 [main] TRACE com.solvd.laba.parsers.DOMParserImpl - Base Cost: 180000.00
+16:43:12.453 [main] TRACE com.solvd.laba.parsers.DOMParserImpl - Building Description: Desc 2
+16:43:12.453 [main] TRACE com.solvd.laba.parsers.DOMParserImpl - Cost Estimate: 1000000.00
+16:43:12.453 [main] TRACE com.solvd.laba.parsers.DOMParserImpl - ------------------------------------
+16:43:12.453 [main] TRACE com.solvd.laba.parsers.DOMParserImpl - Employee ID: 2
+16:43:12.453 [main] TRACE com.solvd.laba.parsers.DOMParserImpl - First Name: Sam
+16:43:12.453 [main] TRACE com.solvd.laba.parsers.DOMParserImpl - Last Name: Johnson
+16:43:12.453 [main] TRACE com.solvd.laba.parsers.DOMParserImpl - Position: BUILDER
+16:43:12.453 [main] TRACE com.solvd.laba.parsers.DOMParserImpl - Building ID: 3
+16:43:12.453 [main] TRACE com.solvd.laba.parsers.DOMParserImpl - Building Type: RESIDENTIAL
+16:43:12.453 [main] TRACE com.solvd.laba.parsers.DOMParserImpl - Base Cost: 120000.00
+16:43:12.453 [main] TRACE com.solvd.laba.parsers.DOMParserImpl - Building Description: Desc 1
+16:43:12.453 [main] TRACE com.solvd.laba.parsers.DOMParserImpl - Cost Estimate: 1000000.00
+16:43:12.453 [main] TRACE com.solvd.laba.parsers.DOMParserImpl - ------------------------------------
+17:09:59.738 [main] TRACE com.solvd.laba.parsers.DOMParserImpl - Company id: 1
+17:09:59.740 [main] TRACE com.solvd.laba.parsers.DOMParserImpl - Company Name: Building
+17:09:59.740 [main] TRACE com.solvd.laba.parsers.DOMParserImpl - Customer ID: 1
+17:09:59.740 [main] TRACE com.solvd.laba.parsers.DOMParserImpl - First Name: John
+17:09:59.740 [main] TRACE com.solvd.laba.parsers.DOMParserImpl - Last Name: Doe
+17:09:59.741 [main] TRACE com.solvd.laba.parsers.DOMParserImpl - Payment{paymentId=1, amount=100000.00, paymentDate=2023-01-15}
+17:09:59.741 [main] TRACE com.solvd.laba.parsers.DOMParserImpl - Employee ID: 1
+17:09:59.741 [main] TRACE com.solvd.laba.parsers.DOMParserImpl - First Name: Alice
+17:09:59.741 [main] TRACE com.solvd.laba.parsers.DOMParserImpl - Last Name: Johnson
+17:09:59.741 [main] TRACE com.solvd.laba.parsers.DOMParserImpl - Position: BUILDER
+17:09:59.742 [main] TRACE com.solvd.laba.parsers.DOMParserImpl - Building ID: 1
+17:09:59.742 [main] TRACE com.solvd.laba.parsers.DOMParserImpl - Building Type: COMMERCIAL
+17:09:59.742 [main] TRACE com.solvd.laba.parsers.DOMParserImpl - Base Cost: 180000.00
+17:09:59.742 [main] TRACE com.solvd.laba.parsers.DOMParserImpl - Building Description: Desc 1
+17:09:59.742 [main] TRACE com.solvd.laba.parsers.DOMParserImpl - Cost Estimate: 1000000.00
+17:09:59.742 [main] TRACE com.solvd.laba.parsers.DOMParserImpl - Building ID: 2
+17:09:59.742 [main] TRACE com.solvd.laba.parsers.DOMParserImpl - Building Type: COMMERCIAL
+17:09:59.742 [main] TRACE com.solvd.laba.parsers.DOMParserImpl - Base Cost: 180000.00
+17:09:59.742 [main] TRACE com.solvd.laba.parsers.DOMParserImpl - Building Description: Desc 2
+17:09:59.743 [main] TRACE com.solvd.laba.parsers.DOMParserImpl - Cost Estimate: 1000000.00
+17:09:59.743 [main] TRACE com.solvd.laba.parsers.DOMParserImpl - ------------------------------------
+17:09:59.743 [main] TRACE com.solvd.laba.parsers.DOMParserImpl - Employee ID: 2
+17:09:59.743 [main] TRACE com.solvd.laba.parsers.DOMParserImpl - First Name: Sam
+17:09:59.743 [main] TRACE com.solvd.laba.parsers.DOMParserImpl - Last Name: Johnson
+17:09:59.743 [main] TRACE com.solvd.laba.parsers.DOMParserImpl - Position: BUILDER
+17:09:59.743 [main] TRACE com.solvd.laba.parsers.DOMParserImpl - Building ID: 3
+17:09:59.743 [main] TRACE com.solvd.laba.parsers.DOMParserImpl - Building Type: RESIDENTIAL
+17:09:59.743 [main] TRACE com.solvd.laba.parsers.DOMParserImpl - Base Cost: 120000.00
+17:09:59.743 [main] TRACE com.solvd.laba.parsers.DOMParserImpl - Building Description: Desc 1
+17:09:59.743 [main] TRACE com.solvd.laba.parsers.DOMParserImpl - Cost Estimate: 1000000.00
+17:09:59.743 [main] TRACE com.solvd.laba.parsers.DOMParserImpl - ------------------------------------
+11:45:56.512 [main] TRACE com.solvd.laba.parsers.DOMParserImpl - Company id: 1
+11:45:56.525 [main] TRACE com.solvd.laba.parsers.DOMParserImpl - Company Name: Building
+11:45:56.526 [main] TRACE com.solvd.laba.parsers.DOMParserImpl - Customer ID: 1
+11:45:56.526 [main] TRACE com.solvd.laba.parsers.DOMParserImpl - First Name: John
+11:45:56.526 [main] TRACE com.solvd.laba.parsers.DOMParserImpl - Last Name: Doe
+11:45:56.527 [main] TRACE com.solvd.laba.parsers.DOMParserImpl - Payment{id=1, amount=100000.00, paymentDate=2023-01-15}
+11:45:56.527 [main] TRACE com.solvd.laba.parsers.DOMParserImpl - Employee ID: 1
+11:45:56.527 [main] TRACE com.solvd.laba.parsers.DOMParserImpl - First Name: Alice
+11:45:56.527 [main] TRACE com.solvd.laba.parsers.DOMParserImpl - Last Name: Johnson
+11:45:56.528 [main] TRACE com.solvd.laba.parsers.DOMParserImpl - Position: BUILDER
+11:45:56.528 [main] TRACE com.solvd.laba.parsers.DOMParserImpl - Building ID: 1
+11:45:56.528 [main] TRACE com.solvd.laba.parsers.DOMParserImpl - Building Type: COMMERCIAL
+11:45:56.528 [main] TRACE com.solvd.laba.parsers.DOMParserImpl - Base Cost: 180000.00
+11:45:56.528 [main] TRACE com.solvd.laba.parsers.DOMParserImpl - Building Description: Desc 1
+11:45:56.528 [main] TRACE com.solvd.laba.parsers.DOMParserImpl - Cost Estimate: 1000000.00
+11:45:56.528 [main] TRACE com.solvd.laba.parsers.DOMParserImpl - Building ID: 2
+11:45:56.528 [main] TRACE com.solvd.laba.parsers.DOMParserImpl - Building Type: COMMERCIAL
+11:45:56.528 [main] TRACE com.solvd.laba.parsers.DOMParserImpl - Base Cost: 180000.00
+11:45:56.528 [main] TRACE com.solvd.laba.parsers.DOMParserImpl - Building Description: Desc 2
+11:45:56.528 [main] TRACE com.solvd.laba.parsers.DOMParserImpl - Cost Estimate: 1000000.00
+11:45:56.529 [main] TRACE com.solvd.laba.parsers.DOMParserImpl - ------------------------------------
+11:45:56.529 [main] TRACE com.solvd.laba.parsers.DOMParserImpl - Employee ID: 2
+11:45:56.529 [main] TRACE com.solvd.laba.parsers.DOMParserImpl - First Name: Sam
+11:45:56.529 [main] TRACE com.solvd.laba.parsers.DOMParserImpl - Last Name: Johnson
+11:45:56.529 [main] TRACE com.solvd.laba.parsers.DOMParserImpl - Position: BUILDER
+11:45:56.529 [main] TRACE com.solvd.laba.parsers.DOMParserImpl - Building ID: 3
+11:45:56.529 [main] TRACE com.solvd.laba.parsers.DOMParserImpl - Building Type: RESIDENTIAL
+11:45:56.529 [main] TRACE com.solvd.laba.parsers.DOMParserImpl - Base Cost: 120000.00
+11:45:56.529 [main] TRACE com.solvd.laba.parsers.DOMParserImpl - Building Description: Desc 1
+11:45:56.529 [main] TRACE com.solvd.laba.parsers.DOMParserImpl - Cost Estimate: 1000000.00
+11:45:56.529 [main] TRACE com.solvd.laba.parsers.DOMParserImpl - ------------------------------------

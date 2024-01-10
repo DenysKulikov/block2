@@ -92,3 +92,12 @@
 19:31:01.112 [main] TRACE com.solvd.laba.MyBatisMain - Building Approval id: 22
 19:31:01.112 [main] TRACE com.solvd.laba.MyBatisMain - CostEstimate (for building) id: 20
 19:31:01.112 [main] TRACE com.solvd.laba.MyBatisMain - Material id: 18
+11:45:29.020 [main] TRACE com.solvd.laba.MyBatisMain - Company id: 177
+11:45:29.021 [main] TRACE com.solvd.laba.MyBatisMain - Salary id: 103
+11:45:29.022 [main] TRACE com.solvd.laba.MyBatisMain - Employee id: 74
+11:45:29.022 [main] TRACE com.solvd.laba.MyBatisMain - Payment id: 53
+11:45:29.022 [main] TRACE com.solvd.laba.MyBatisMain - Customer id: 46
+11:45:29.022 [main] TRACE com.solvd.laba.MyBatisMain - Building id: 33
+11:45:29.022 [main] TRACE com.solvd.laba.MyBatisMain - Building Approval id: 27
+11:45:29.022 [main] TRACE com.solvd.laba.MyBatisMain - CostEstimate (for building) id: 25
+11:45:29.022 [main] TRACE com.solvd.laba.MyBatisMain - Material id: 23
