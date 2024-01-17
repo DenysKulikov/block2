@@ -1,6 +1,7 @@
 package com.solvd.laba.service.impl;
 
 import com.solvd.laba.domain.Company;
+import com.solvd.laba.patterns.factory.AbstractRepositoryFactory;
 import com.solvd.laba.persistence.repositories.CompanyRepository;
 import com.solvd.laba.service.CompanyService;
 
@@ -13,6 +14,10 @@ public class CompanyServiceImpl implements CompanyService {
 
     public CompanyServiceImpl(CompanyRepository companyRepository) {
         this.companyRepository = companyRepository;
+    }
+
+    public CompanyServiceImpl(String dbType, String type) {
+        companyRepository = AbstractRepositoryFactory.createFactory(dbType).createCompanyRepository(type);
     }
 
     @Override

@@ -18,7 +18,6 @@ public class EmployeeServiceImpl implements EmployeeService {
     @Override
     public void create(Employee employee, Long companyId, Long salaryId, String positionName) throws SQLException {
         employee.setId(null);
-
         employeeRepository.create(employee, companyId, salaryId, positionName);
     }
 
